@@ -2,21 +2,19 @@
 
 > **GSEB Class 10 Social Science (સામાજિક વિજ્ઞાન) Complete Chapter-Wise Digital Revision Notes, Historical Timeline, Key Terminologies & Board IMP Questions.**
 
-[![GSEB Class 10](https://img.shields.io/badge/GSEB-Class%2010%20Social%20Science-38bdf8.svg)](https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app)
-[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Mobile%20%7C%20PWA-818cf8.svg)](https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app)
-[![Dark Mode](https://img.shields.io/badge/Theme-AMOLED%20Pitch%20Dark-34d399.svg)](https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app)
+[![Live Website](https://img.shields.io/badge/Live%20Website-rahulk2011.github.io%2FSS--STD--10---38bdf8.svg)](https://rahulk2011.github.io/SS-STD-10-/)
+[![GSEB Class 10](https://img.shields.io/badge/GSEB-Class%2010%20Social%20Science-818cf8.svg)](https://rahulk2011.github.io/SS-STD-10-/)
+[![Theme](https://img.shields.io/badge/Theme-AMOLED%20Pitch%20Dark-34d399.svg)](https://rahulk2011.github.io/SS-STD-10-/)
 
 ---
 
-## 🌐 Live Website Access (Open on Any Device)
+## 🌐 Official Live Website Link (Works on Any Device)
 
-You can open and view this application right now on any phone, tablet, laptop, or desktop using the active live link:
+Open this live link on any smartphone (Android / iPhone), tablet, iPad, laptop, or desktop computer without any login or restrictions:
 
-👉 **[https://ais-dev-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app](https://ais-dev-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app)**
+👉 **[https://rahulk2011.github.io/SS-STD-10-/](https://rahulk2011.github.io/SS-STD-10-/)**
 
-*(Note: In Google AI Studio, click the **"Share"** button in the top right to enable the permanent public shared link: `https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app`)*
-
-> 💡 **Mobile Tip:** Open the link on Google Chrome (Android) or Safari (iOS) and tap **"Add to Home Screen"** to use it just like a native mobile app!
+> 📱 **Mobile Tip:** Open the link in Google Chrome or Safari and tap **"Add to Home Screen"** to use it just like a native mobile app!
 
 ---
 
