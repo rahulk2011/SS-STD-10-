@@ -22,13 +22,20 @@ Open this live link on any smartphone (Android / iPhone), tablet, iPad, laptop, 
 
 - **100% Student Focused (Zero Fluff):** Purely dedicated to board exam preparation with zero admin or school clutter.
 - **117+ Pages of Handwritten Notes Digitized:** Meticulously transcribed and organized into 19 high-yield chapters in Gujarati with English terminology references.
+- **5 Primary Navigation Suites:**
+  1. 📚 **પ્રકરણો (19 Chapters):** Complete chapter-wise revision cards with subject category filters.
+  2. 🗺️ **ભારતનો રેખાંકિત નકશો & સંજ્ઞા પૂર્તિ (Section D - 4 Marks Interactive Map Canvas):** માત્ર લખાણ નહીં, પરંતુ ભારતનો વાસ્તવિક રેખાંકિત SVG નકશો (નદીઓ, દરિયાકાંઠો અને બોર્ડ સંજ્ઞાઓ 🌾, ▲, 🌊, ⛏️, ⚓, ▩ સાથે). નકશા પર ક્લિક કરતાં જ સ્થળની ટિપ અને રાજ્ય દેખાય છે. સાથે '🗺️ અભ્યાસ મોડ', '✏️ સેલ્ફ-ટેસ્ટ બ્લાઇન્ડ નકશો' અને '🖨️ બોર્ડ પ્રેક્ટિસ માટે નકશો પ્રિન્ટ' ની સુવિધા!
+  3. 📝 **કસ્ટમ મોક ટેસ્ટ જનરેટર & એક્ઝામ સેન્ટર (PRO Quiz Builder):** 140+ થી વધુ પ્રશ્નોમાંથી પોતાની મરજી મુજબ કોઈપણ પ્રકરણ(ઓ) અથવા મલ્ટિ-ચેપ્ટર સિલેક્ટ કરીને ૫, ૧૦, ૧૫, ૨૦, ૨૫ કે ૩૦ પ્રશ્નોનો ટેસ્ટ બનાવો. '⚡ પ્રેક્ટિસ મોડ' (ઇન્સ્ટન્ટ આન્સર) અને '⏱️ બોર્ડ એક્ઝામ મોડ' (ટાઈમર & ગ્રેડ કાર્ડ A1/A2/B1). સાથે **'➕ મારો પ્રશ્ન ઉમેરો'** વડે વિદ્યાર્થી કે શિક્ષક પોતાના પ્રશ્નો ઉમેરી શકે છે અને **'🖨️ પેપર પ્રિન્ટ / PDF'** ડાઉનલોડ કરી શકે છે!
+  4. ⭐ **સેવ કરેલ IMP પ્રશ્નો (Personal Bookmarks):** દરેક IMP પ્રશ્ન પર આપેલા સ્ટાર (☆) પર ક્લિક કરીને પોતાની ખાનગી ક્વિક રિવિઝન યાદી બનાવો (LocalStorage સપોર્ટ).
+  5. 📊 **બોર્ડ બ્લૂપ્રિન્ટ & ગુણભાર:** GSEB 80 ગુણનું સંપૂર્ણ પ્રશ્નપત્ર માળખું અને 4 ગુણના હાઈ-વેઇટેજ ચેપ્ટર્સની યાદી.
 - **5-in-1 Quick Revision Sections for Every Chapter:**
-  1. 📌 **મુખ્ય મુદ્દાઓ અને સંકલ્પનાઓ (Core Concepts):** Point-by-point conceptual breakdown.
-  2. 🧠 **માઇન્ડ મેપ & મેમરી હેક્સ (Visual Mind Maps & Mnemonics):** Interactive visual concept tree with board exam memory formulas (દા.ત. વાવના પ્રકારો માટે 'ન-ભ-જ-વિ', કોલસા માટે 'A-B-L-P', કલમ 51(ક) માટે 'છ-જ-ટ').
-  3. 📅 **મહત્વની સાલવારી અને તારીખો (Timeline & Dates):** Chronological badges highlighting key years, acts, and events.
-  4. 📖 **વ્યાખ્યાઓ / શબ્દાવલિ (Definitions):** Accurate board definitions (e.g., સંસ્કૃતિ, કાળો પેગોડા, રેગુર, પ્રચ્છન્ન બેરોજગારી, RTI, COPRA).
-  5. 🎯 **બોર્ડ પરીક્ષા મોસ્ટ IMP પ્રશ્નોત્તરી (2, 3 અને 4 ગુણ):** High-scoring model answers and structured points.
-- **1-Click Audio Reader:** Streamlined high-yield summary voice reader directly via browser Web Speech API.
+  - 📌 **મુખ્ય મુદ્દાઓ (Core Concepts)**
+  - 🧠 **માઇન્ડ મેપ & મેમરી હેક્સ (Visual Mind Maps & Board Mnemonics)**
+  - 📅 **મહત્વની સાલવારી અને તારીખો (Historical Timeline)**
+  - 📖 **વ્યાખ્યાઓ / શબ્દાવલિ (Definitions)**
+  - 🎯 **બોર્ડ મોસ્ટ IMP પ્રશ્નોત્તરી (2, 3 અને 4 ગુણ) with ⭐ Bookmark Star**
+- **🖨️ / 📄 1-Click Print & PDF Mode:** A4 પ્રિન્ટેબલ મોડ જે ડાર્ક બેકગ્રાઉન્ડ વગર ક્લીન કાગળ પર પ્રિન્ટ કે PDF ડાઉનલોડ કરવા દે છે.
+- **🔊 1-Click Audio Reader:** Web Speech API આધારિત ગુજરાતી/પ્રાદેશિક સારાંશ વાચક.
 - **Real-Time Instant Search:** Filter any chapter, concept, year, or term in real time as you type (e.g., `મોહેં-જો-દડો`, `NH-44`, `કલમ 51`).
 - **Subject Category Filters:** Instant switching between:
   - 🏛️ **ઇતિહાસ (History)**: Chapters 1, 2, 3, 4, 5, 6

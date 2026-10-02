@@ -600,6 +600,730 @@
       text-align: center;
     }
     .foot-btn:active { background: var(--surface-hover); }
+
+    /* App Primary Navigation Pills Bar */
+    .app-nav-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 10px 16px 4px 16px;
+      background: rgba(10, 15, 29, 0.9);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 57px;
+      z-index: 40;
+    }
+    .app-nav-pills::-webkit-scrollbar { display: none; }
+
+    .nav-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-family: var(--font-gu);
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-pill.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Print Button */
+    .print-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-family: var(--font-gu);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .print-btn:active { background: var(--surface-hover); }
+
+    /* Bookmark Star Button */
+    .btn-bm {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 15px;
+      padding: 2px 6px;
+      transition: all 0.2s;
+    }
+    .btn-bm.starred {
+      color: #fbbf24;
+      text-shadow: 0 0 6px rgba(251, 191, 36, 0.5);
+    }
+
+    /* Interactive India Map Guide & Visual Canvas Styling */
+    .map-visual-card {
+      background: #0b1329;
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    .map-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .map-mode-pills {
+      display: flex;
+      gap: 6px;
+      background: #0f172a;
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .map-mode-pill {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-gu);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .map-mode-pill.active {
+      background: var(--accent);
+      color: #0a0f1d;
+    }
+    .india-svg-wrap {
+      width: 100%;
+      height: 380px;
+      background: radial-gradient(circle at center, #101935 0%, #080d1a 100%);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .india-svg {
+      width: 100%;
+      height: 100%;
+      max-height: 380px;
+    }
+    .map-pin {
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .map-pin:hover {
+      transform: scale(1.25);
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+    }
+    .map-pin.active {
+      transform: scale(1.35);
+      filter: drop-shadow(0 0 10px #fbbf24);
+      animation: pulseGlow 1.5s infinite;
+    }
+    .map-pin text {
+      font-family: 'Noto Sans Gujarati', sans-serif;
+      font-size: 8.5px;
+      font-weight: 700;
+      fill: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.9);
+      pointer-events: none;
+    }
+    .test-mode .map-pin text {
+      display: none;
+    }
+    .test-mode .map-pin.revealed text {
+      display: block;
+    }
+
+    /* Map Active Location Popup */
+    .map-active-popup {
+      display: none;
+      margin-top: 10px;
+      background: #0f172a;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 10px 12px;
+      animation: fadeIn 0.2s ease-in;
+    }
+    .map-active-popup-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Map Symbols Legend Bar */
+    .map-legend-box {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 8px 10px;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 11px;
+    }
+    .map-legend-box::-webkit-scrollbar { display: none; }
+    .map-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      color: #cbd5e1;
+    }
+
+    .map-cat-filter {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-bottom: 14px;
+    }
+    .map-cat-filter::-webkit-scrollbar { display: none; }
+    .map-cat-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-family: var(--font-gu);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .map-cat-btn.active {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+    .map-item-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
+    }
+    .map-item-card.highlighted {
+      border-color: var(--amber);
+      background: rgba(251, 191, 36, 0.08);
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
+    }
+    .map-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .map-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .map-tag {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .map-loc {
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .map-tip {
+      font-size: 11.5px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .btn-show-on-map {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-gu);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    /* Enhanced Quiz Builder & Test Center Styling */
+    .quiz-builder-card {
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.1);
+    }
+    .builder-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .builder-subtabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .builder-subtab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-gu);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .builder-subtab.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+    }
+    .builder-select {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-family: var(--font-gu);
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    /* Multi-Chapter Checkbox Grid */
+    .ch-grid-container {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .ch-quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .ch-quick-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      font-family: var(--font-gu);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ch-quick-btn:hover, .ch-quick-btn:active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .ch-checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 6px;
+    }
+    .ch-cb-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s;
+    }
+    .ch-cb-label:has(input:checked) {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #fff;
+      font-weight: 700;
+    }
+    .ch-cb-label input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    /* Mode & Count Pills */
+    .builder-counts {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .builder-counts::-webkit-scrollbar { display: none; }
+    .builder-count-btn {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: var(--font-gu);
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .builder-count-btn.active {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Quiz Mode Toggle (Practice vs Exam) */
+    .quiz-mode-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .quiz-mode-card {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .quiz-mode-card.active {
+      border-color: var(--emerald);
+      background: rgba(52, 211, 153, 0.12);
+    }
+    .quiz-mode-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .quiz-mode-desc {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Action Buttons Row */
+    .quiz-actions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-generate-quiz {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+      border: none;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 800;
+      font-family: var(--font-gu);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-generate-quiz:active {
+      transform: scale(0.98);
+    }
+    .btn-secondary-row {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-add-q-toggle, .btn-print-test {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-gu);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-add-q-toggle:hover, .btn-print-test:hover {
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Custom Question Drawer/Form Panel */
+    .add-q-panel {
+      display: none;
+      background: #0b1329;
+      border: 1px dashed var(--accent);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 12px;
+      animation: fadeIn 0.2s ease-in;
+    }
+    .add-q-input {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: var(--font-gu);
+      margin-bottom: 8px;
+      outline: none;
+    }
+    .add-q-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Quiz Score & Timer Banner */
+    .quiz-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(56, 189, 248, 0.15) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .quiz-score-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: #34d399;
+    }
+    .quiz-timer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .quiz-timer-badge.urgent {
+      background: rgba(244, 63, 94, 0.2);
+      border-color: #f43f5e;
+      color: #fb7185;
+      animation: pulseGlow 1.2s infinite;
+    }
+
+    /* Quiz Card & Options */
+    .quiz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .quiz-q-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-opt {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-family: var(--font-gu);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .quiz-opt:active { transform: scale(0.98); }
+    .quiz-opt.selected {
+      background: rgba(56, 189, 248, 0.2) !important;
+      border-color: var(--accent) !important;
+      color: #fff !important;
+    }
+    .quiz-opt.correct {
+      background: rgba(16, 185, 129, 0.2) !important;
+      border-color: #10b981 !important;
+      color: #34d399 !important;
+      font-weight: 700;
+    }
+    .quiz-opt.wrong {
+      background: rgba(244, 63, 94, 0.2) !important;
+      border-color: #f43f5e !important;
+      color: #fb7185 !important;
+    }
+    .quiz-expl {
+      margin-top: 10px;
+      padding: 8px 10px;
+      background: #0f172a;
+      border-left: 3px solid var(--accent);
+      font-size: 11.5px;
+      color: #94a3b8;
+      border-radius: 4px;
+      display: none;
+    }
+
+    /* Result Card (Exam Mode Submission) */
+    .quiz-result-card {
+      background: linear-gradient(145deg, #101935 0%, #0d152a 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .result-grade-badge {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 900;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.15);
+      border: 2px solid #34d399;
+      width: 72px;
+      height: 72px;
+      line-height: 68px;
+      border-radius: 50%;
+      margin: 10px auto;
+    }
+    .result-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .result-stat-box {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .result-stat-num {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .result-stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Blueprint Table */
+    .bp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .bp-table th, .bp-table td {
+      border: 1px solid var(--border);
+      padding: 9px 10px;
+      text-align: left;
+    }
+    .bp-table th {
+      background: #0f172a;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .bp-table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+
+    /* Print Styles */
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .top-nav, .app-nav-pills, .btn-back, .btn-listen, .print-btn, .sec-tabs, .chapter-foot-nav, .btn-bm,
+      .quiz-builder-card, .btn-secondary-row, .add-q-panel, #btn-reset-quiz, #btn-submit-exam, .quiz-timer-badge { display: none !important; }
+      .view { display: none !important; padding: 0 !important; }
+      
+      body:not(.printing-quiz) #view-detail { display: block !important; }
+      body.printing-quiz #view-quiz { display: block !important; }
+
+      .content-card, .qa-box, .detail-header, .mindmap-container, .quiz-card, .quiz-banner {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      .detail-title, .card-heading, .qa-q, .mm-root, .quiz-q-title, #quiz-active-title { color: #000 !important; }
+      .qa-a, .bullet-item, .mm-node { color: #222 !important; }
+      .quiz-opt {
+        background: #fff !important;
+        color: #111 !important;
+        border: 1px solid #bbb !important;
+      }
+      .quiz-expl {
+        display: block !important;
+        background: #f8fafc !important;
+        color: #334155 !important;
+        border-left: 3px solid #0284c7 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -620,7 +1344,16 @@
       </div>
     </header>
 
-    <!-- VIEW 1: HOME DASHBOARD -->
+    <!-- App Primary Navigation Pills Bar -->
+    <nav class="app-nav-pills" id="app-nav-bar">
+      <button class="nav-pill active" data-view="home">📚 પ્રકરણો (19)</button>
+      <button class="nav-pill" data-view="map">🗺️ નકશા પૂર્તિ (4 ગુણ)</button>
+      <button class="nav-pill" data-view="quiz">📝 મોક ક્વિઝ ટેસ્ટ</button>
+      <button class="nav-pill" data-view="bookmarks">⭐ સેવ કરેલ IMP (<span id="bm-count">0</span>)</button>
+      <button class="nav-pill" data-view="blueprint">📊 બ્લૂપ્રિન્ટ & ગુણભાર</button>
+    </nav>
+
+    <!-- VIEW 1: HOME DASHBOARD (CHAPTERS) -->
     <main id="view-home" class="view active">
       <!-- Search Input -->
       <div class="search-box">
@@ -641,7 +1374,454 @@
       <div id="chapters-list" class="chapters-list"></div>
     </main>
 
-    <!-- VIEW 2: CHAPTER DETAIL SCREEN -->
+    <!-- VIEW 2: MAP GUIDE (નકશા પૂર્તિ - 4 ગુણ) -->
+    <main id="view-map" class="view">
+      <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(129, 140, 248, 0.15) 100%); border: 1px solid var(--accent); border-radius: 14px; padding: 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 2px;">🗺️ ભારતનો રેખાંકિત નકશો & સંજ્ઞા પૂર્તિ (વિભાગ D - 4 ગુણ)</div>
+          <div style="font-size: 11.5px; color: #cbd5e1;">બોર્ડ પરીક્ષામાં પૂછાતાં સ્થળોને નકશામાં તેમના ચોક્કસ ભૌગોલિક સ્થાન અને સાચી સંજ્ઞા સાથે દર્શાવો.</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE INDIA MAP VISUAL CANVAS -->
+      <div class="map-visual-card">
+        <div class="map-header-row">
+          <div style="font-size: 13.5px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 6px;">
+            <span>📍 ભારતનો રેખાંકિત નકશો (Interactive Map)</span>
+          </div>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <div class="map-mode-pills">
+              <button class="map-mode-pill active" id="btn-map-study-mode" data-mmode="study">🗺️ અભ્યાસ</button>
+              <button class="map-mode-pill" id="btn-map-test-mode" data-mmode="test">✏️ સેલ્ફ-ટેસ્ટ</button>
+            </div>
+            <button id="btn-print-blank-map" style="background: #0f172a; border: 1px solid var(--border); color: #cbd5e1; font-family: var(--font-gu); font-size: 11px; padding: 4px 8px; border-radius: 6px; cursor: pointer;" title="બોર્ડ પ્રેક્ટિસ માટે નકશો પ્રિન્ટ કરો">
+              🖨️ પ્રિન્ટ
+            </button>
+          </div>
+        </div>
+
+        <!-- SVG Map of India Container -->
+        <div class="india-svg-wrap" id="india-svg-wrap">
+          <svg class="india-svg" viewBox="0 0 520 580" id="india-map-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="indiaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0f172a"/>
+              </linearGradient>
+              <pattern id="soilPattern" width="6" height="6" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="0" x2="6" y2="6" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <!-- Detailed Outline Polygon of India (Recognizable Geographic Contour) -->
+            <path id="india-main-path" class="india-outline" d="
+              M 160 40 
+              C 175 30, 205 35, 215 50 
+              C 230 65, 245 75, 240 95 
+              C 235 110, 255 125, 275 140 
+              C 295 155, 320 160, 345 165 
+              C 370 170, 390 155, 410 145 
+              C 435 135, 465 145, 475 170 
+              C 480 190, 465 210, 450 220 
+              C 435 230, 420 245, 430 260 
+              C 440 275, 425 290, 405 285 
+              C 390 280, 380 270, 370 275 
+              C 365 285, 375 295, 370 305 
+              C 360 315, 340 315, 335 330 
+              C 330 350, 310 380, 290 410 
+              C 275 435, 260 460, 245 490 
+              C 235 515, 220 535, 210 550 
+              C 205 550, 195 530, 190 500 
+              C 185 470, 175 435, 170 400 
+              C 165 370, 155 345, 140 330 
+              C 130 320, 110 325, 95 335 
+              C 80 340, 65 335, 65 320 
+              C 65 305, 80 295, 95 290 
+              C 75 285, 60 275, 55 260 
+              C 50 245, 70 240, 85 240 
+              C 95 230, 90 215, 80 200 
+              C 70 180, 85 160, 105 145 
+              C 120 130, 125 105, 135 85 
+              Z"
+              fill="url(#indiaGrad)" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"
+            />
+
+            <!-- Major GSEB Exam Rivers -->
+            <!-- Ganga River -->
+            <path d="M 215 150 Q 280 185 370 280" fill="none" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="3,2" opacity="0.65"/>
+            <!-- Narmada River -->
+            <path d="M 220 315 Q 165 315 125 310" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.75"/>
+            <!-- Satluj River -->
+            <path d="M 195 120 Q 170 135 140 145" fill="none" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="3,2" opacity="0.65"/>
+            <!-- Mahanadi River -->
+            <path d="M 270 300 Q 315 310 340 330" fill="none" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="3,2" opacity="0.65"/>
+
+            <!-- Geographic Water Body / Neighbor Labels -->
+            <text x="45" y="380" fill="#64748b" font-size="9" font-weight="700">અરબ સાગર</text>
+            <text x="360" y="390" fill="#64748b" font-size="9" font-weight="700">બંગાળની ખાડી</text>
+            <text x="170" y="570" fill="#64748b" font-size="9" font-weight="700">હિંદ મહાસાગર</text>
+
+            <!-- Dynamic Pin Markers Container -->
+            <g id="map-pins-group">
+              <!-- Rendered dynamically by JavaScript -->
+            </g>
+          </svg>
+        </div>
+
+        <!-- Selected Location Details Floating Drawer -->
+        <div id="map-active-popup" class="map-active-popup">
+          <div class="map-active-popup-title">
+            <span id="map-pop-name">સ્થળ નામ</span>
+            <button onclick="document.getElementById('map-active-popup').style.display='none'" style="background: none; border: none; color: #94a3b8; font-size: 14px; cursor: pointer;">✕</button>
+          </div>
+          <div style="font-size: 11.5px; color: var(--accent); margin: 3px 0;" id="map-pop-state">રાજ્ય / પ્રદેશ</div>
+          <div style="font-size: 11px; color: #cbd5e1; line-height: 1.5;" id="map-pop-tip">ટિપ</div>
+        </div>
+      </div>
+
+      <!-- GSEB Board Standard Symbol Legend (સંજ્ઞા સૂચિ) -->
+      <div style="font-size: 11.5px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">📋 બોર્ડ નકશા સંજ્ઞા સૂચિ (Index):</div>
+      <div class="map-legend-box">
+        <div class="map-legend-item"><span style="color: #34d399; font-weight: 900;">🌾</span> <span>કૃષિ પાકો</span></div>
+        <div class="map-legend-item"><span style="color: #fb7185; font-weight: 900;">▲</span> <span>રાષ્ટ્રીય ઉદ્યાન / અભયારણ્ય</span></div>
+        <div class="map-legend-item"><span style="color: #38bdf8; font-weight: 900;">🌊</span> <span>નદી બંધ / સિંચાઈ</span></div>
+        <div class="map-legend-item"><span style="color: #fbbf24; font-weight: 900;">⛏️</span> <span>ખનીજ / ઉદ્યોગ</span></div>
+        <div class="map-legend-item"><span style="color: #a78bfa; font-weight: 900;">⚓</span> <span>બંદર / SEZ</span></div>
+        <div class="map-legend-item"><span style="color: #f59e0b; font-weight: 900;">▩</span> <span>જમીન પ્રદેશ</span></div>
+      </div>
+
+      <!-- Map Categories Filter -->
+      <div class="map-cat-filter">
+        <button class="map-cat-btn active" data-mcat="all">બધાં સ્થળો</button>
+        <button class="map-cat-btn" data-mcat="જમીન">જમીન પ્રકારો</button>
+        <button class="map-cat-btn" data-mcat="પાક">કૃષિ પાકો</button>
+        <button class="map-cat-btn" data-mcat="વન્યજીવ">અભયારણ્ય / ઉદ્યાન</button>
+        <button class="map-cat-btn" data-mcat="સિંચાઈ">બંધ & નદી યોજના</button>
+        <button class="map-cat-btn" data-mcat="ખનીજ">ખનીજ & ઉદ્યોગો</button>
+      </div>
+
+      <!-- Map Search Box -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="map-search-input" class="search-input" placeholder="સ્થળ કે પાક શોધો (દા.ત. ગીર, કાળી જમીન, ભાખરા)...">
+      </div>
+
+      <div id="map-items-list"></div>
+    </main>
+
+    <!-- VIEW 3: MOCK QUIZ TEST (CUSTOM TEST GENERATOR & EXAM CENTER) -->
+    <main id="view-quiz" class="view">
+      <!-- Custom Quiz Generator Card -->
+      <div class="quiz-builder-card">
+        <div style="font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span>🛠️ કસ્ટમ મોક ટેસ્ટ જનરેટર</span>
+            <span class="brand-badge" style="background: var(--accent); color: #0a0f1d; font-size: 10px;">PRO</span>
+          </div>
+          <span style="font-size: 11px; color: var(--accent); font-weight: 700;" id="bank-total-badge">150+ પ્રશ્નો ઉપલબ્ધ</span>
+        </div>
+        <div style="font-size: 11.5px; color: #94a3b8; margin-bottom: 12px;">તમારે જે ચેપ્ટર કે વિષયનો ટેસ્ટ આપવો હોય તે તમારી મરજી મુજબ પસંદ કરો અને પ્રશ્નોની સંખ્યા નક્કી કરો.</div>
+
+        <!-- Mode of Chapter Selection Subtabs -->
+        <div class="builder-subtabs">
+          <button class="builder-subtab active" data-stab="dropdown">🎯 ઝડપી પ્રકરણ પસંદગી</button>
+          <button class="builder-subtab" data-stab="multiselect">☑️ મલ્ટિ-ચેપ્ટર (Custom Mix)</button>
+          <button class="builder-subtab" data-stab="myquestions">✍️ મારા પ્રશ્નો (<span id="my-q-count">0</span>)</button>
+        </div>
+
+        <!-- Tab 1: Single Dropdown / Category Select -->
+        <div id="stab-panel-dropdown">
+          <label class="builder-label">૧. પ્રકરણ અથવા વિષય વિભાગ પસંદ કરો:</label>
+          <select id="builder-ch-select" class="builder-select">
+            <option value="all">🌐 બધા પ્રકરણો (સંપૂર્ણ અભ્યાસક્રમ - All 19 Ch)</option>
+            <optgroup label="વિષય વિભાગ મુજબ">
+              <option value="cat-ઇતિહાસ">🏛️ ફક્ત ઇતિહાસ (Ch 1 થી 6)</option>
+              <option value="cat-ભૂગોળ">🌍 ફક્ત ભૂગોળ (Ch 8 થી 14)</option>
+              <option value="cat-અર્થશાસ્ત્ર">📈 ફક્ત અર્થશાસ્ત્ર (Ch 15 થી 19)</option>
+              <option value="cat-નાગરિક">⚖️ ફક્ત નાગરિક / બંધારણ (Ch 20 અને 21)</option>
+            </optgroup>
+            <optgroup label="ચોક્કસ પ્રકરણ મુજબ">
+              <option value="ch-01">Ch 1: ભારતનો વારસો</option>
+              <option value="ch-02">Ch 2: ભારતનો સાંસ્કૃતિક વારસો: હસ્ત અને લલિતકલા</option>
+              <option value="ch-03">Ch 3: ભારતનો સાંસ્કૃતિક વારસો: શિલ્પ અને સ્થાપત્ય</option>
+              <option value="ch-04">Ch 4: ભારતનો સાહિત્યિક વારસો</option>
+              <option value="ch-05">Ch 5: ભારતનો વિજ્ઞાન અને ટેકનોલોજીનો વારસો</option>
+              <option value="ch-06">Ch 6: ભારતના સાંસ્કૃતિક વારસાનાં સ્થળો</option>
+              <option value="ch-08">Ch 8: કુદરતી સંસાધનો</option>
+              <option value="ch-10">Ch 10: ભારત: કૃષિ</option>
+              <option value="ch-11">Ch 11: ભારત: જળ સંસાધન</option>
+              <option value="ch-12">Ch 12: ભારત: ખનીજ અને શક્તિના સંસાધનો</option>
+              <option value="ch-13">Ch 13: ઉત્પાદન ઉદ્યોગો</option>
+              <option value="ch-14">Ch 14: પરિવહન, સંદેશાવ્યવહાર અને વ્યાપાર</option>
+              <option value="ch-15">Ch 15: આર્થિક વિકાસ</option>
+              <option value="ch-16">Ch 16: આર્થિક ઉદારીકરણ અને વૈશ્વિકીકરણ</option>
+              <option value="ch-17">Ch 17: આર્થિક સમસ્યાઓ અને પડકારો: ગરીબી અને બેરોજગારી</option>
+              <option value="ch-18">Ch 18: ભાવવધારો અને ગ્રાહક જાગૃતિ</option>
+              <option value="ch-19">Ch 19: માનવ વિકાસ</option>
+              <option value="ch-20">Ch 20: ભારતની સામાજિક સમસ્યાઓ અને પડકારો</option>
+              <option value="ch-21">Ch 21: સામાજિક પરિવર્તન</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Tab 2: Multi-Chapter Checkboxes Grid -->
+        <div id="stab-panel-multiselect" style="display: none;">
+          <label class="builder-label">૧. મનપસંદ પ્રકરણો પસંદ કરો (ચેકબોક્સ ટીક કરો):</label>
+          <div class="ch-grid-container">
+            <div class="ch-quick-actions">
+              <button class="ch-quick-btn" id="btn-ch-all">બધા (All 19)</button>
+              <button class="ch-quick-btn" id="btn-ch-hist">ઇતિહાસ (1-6)</button>
+              <button class="ch-quick-btn" id="btn-ch-geo">ભૂગોળ (8-14)</button>
+              <button class="ch-quick-btn" id="btn-ch-eco">અર્થશાસ્ત્ર (15-19)</button>
+              <button class="ch-quick-btn" id="btn-ch-civ">નાગરિક (20-21)</button>
+              <button class="ch-quick-btn" id="btn-ch-none" style="color: var(--rose);">સાફ કરો</button>
+            </div>
+            <div class="ch-checkbox-grid" id="ch-checkboxes-container">
+              <!-- Dynamically populated 19 chapters checkboxes -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: My Custom Questions Panel -->
+        <div id="stab-panel-myquestions" style="display: none;">
+          <div style="background: #0f172a; border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 12px; font-weight: 700; color: #fff;">તમે જાતે ઉમેરેલા પ્રશ્નો:</span>
+              <button id="btn-clear-my-q" style="background: transparent; border: none; color: var(--rose); font-size: 11px; cursor: pointer; font-family: var(--font-gu);">બધા પ્રશ્નો હટાવો</button>
+            </div>
+            <div id="my-q-list" style="font-size: 11.5px; color: #cbd5e1; max-height: 140px; overflow-y: auto;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Count Selector -->
+        <label class="builder-label">૨. પ્રશ્નોની સંખ્યા નક્કી કરો:</label>
+        <div class="builder-counts">
+          <button class="builder-count-btn active" data-cnt="5">૫ પ્રશ્નો</button>
+          <button class="builder-count-btn" data-cnt="10">૧૦ પ્રશ્નો</button>
+          <button class="builder-count-btn" data-cnt="15">૧૫ પ્રશ્નો</button>
+          <button class="builder-count-btn" data-cnt="20">૨૦ પ્રશ્નો</button>
+          <button class="builder-count-btn" data-cnt="25">૨૫ પ્રશ્નો</button>
+          <button class="builder-count-btn" data-cnt="30">૩૦ પ્રશ્નો</button>
+          <button class="builder-count-btn" data-cnt="all">બધા ઉપલબ્ધ</button>
+        </div>
+
+        <!-- Quiz Mode Selector (Practice vs Timed Board Exam) -->
+        <label class="builder-label">૩. ટેસ્ટ મોડ પસંદ કરો:</label>
+        <div class="quiz-mode-row">
+          <div class="quiz-mode-card active" id="mode-practice" data-mode="practice">
+            <div class="quiz-mode-title">⚡ પ્રેક્ટિસ મોડ</div>
+            <div class="quiz-mode-desc">તરત જ સાચો જવાબ અને સમજૂતી દેખાશે</div>
+          </div>
+          <div class="quiz-mode-card" id="mode-exam" data-mode="exam">
+            <div class="quiz-mode-title">⏱️ બોર્ડ એક્ઝામ મોડ</div>
+            <div class="quiz-mode-desc">ટાઈમર સાથે છેલ્લે પરિણામ & ગ્રેડ કાર્ડ મળશે</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="quiz-actions-grid">
+          <button id="btn-generate-quiz" class="btn-generate-quiz">
+            <span>🚀 નવો કસ્ટમ ટેસ્ટ શરૂ કરો (Generate Test)</span>
+          </button>
+          <div class="btn-secondary-row">
+            <button id="btn-toggle-add-q" class="btn-add-q-toggle">
+              <span>➕ મારો પ્રશ્ન ઉમેરો</span>
+            </button>
+            <button id="btn-print-test" class="btn-print-test">
+              <span>🖨️ પેપર પ્રિન્ટ / PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Custom Question Form Panel (Collapsible) -->
+        <div id="add-q-panel" class="add-q-panel">
+          <div style="font-size: 13.5px; font-weight: 800; color: #fff; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <span>✍️ તમારો નવો પ્રશ્ન ઉમેરો (Create Custom MCQ)</span>
+            <button id="btn-close-add-q" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 16px;">✕</button>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">આ પ્રશ્ન તમારા બ્રાઉઝરમાં સેવ થશે અને ટેસ્ટમાં આપોઆપ સામેલ થઈ જશે.</div>
+
+          <label class="builder-label">ચેપ્ટર પસંદ કરો:</label>
+          <select id="new-q-ch" class="builder-select" style="margin-bottom: 8px;">
+            <option value="ch-01">Ch 1: ભારતનો વારસો</option>
+            <option value="ch-02">Ch 2: ભારતનો સાંસ્કૃતિક વારસો: હસ્ત અને લલિતકલા</option>
+            <option value="ch-03">Ch 3: ભારતનો સાંસ્કૃતિક વારસો: શિલ્પ અને સ્થાપત્ય</option>
+            <option value="ch-04">Ch 4: ભારતનો સાહિત્યિક વારસો</option>
+            <option value="ch-05">Ch 5: ભારતનો વિજ્ઞાન અને ટેકનોલોજીનો વારસો</option>
+            <option value="ch-06">Ch 6: ભારતના સાંસ્કૃતિક વારસાનાં સ્થળો</option>
+            <option value="ch-08">Ch 8: કુદરતી સંસાધનો</option>
+            <option value="ch-10">Ch 10: ભારત: કૃષિ</option>
+            <option value="ch-11">Ch 11: ભારત: જળ સંસાધન</option>
+            <option value="ch-12">Ch 12: ભારત: ખનીજ અને શક્તિના સંસાધનો</option>
+            <option value="ch-13">Ch 13: ઉત્પાદન ઉદ્યોગો</option>
+            <option value="ch-14">Ch 14: પરિવહન, સંદેશાવ્યવહાર અને વ્યાપાર</option>
+            <option value="ch-15">Ch 15: આર્થિક વિકાસ</option>
+            <option value="ch-16">Ch 16: આર્થિક ઉદારીકરણ અને વૈશ્વિકીકરણ</option>
+            <option value="ch-17">Ch 17: આર્થિક સમસ્યાઓ અને પડકારો: ગરીબી અને બેરોજગારી</option>
+            <option value="ch-18">Ch 18: ભાવવધારો અને ગ્રાહક જાગૃતિ</option>
+            <option value="ch-19">Ch 19: માનવ વિકાસ</option>
+            <option value="ch-20">Ch 20: ભારતની સામાજિક સમસ્યાઓ અને પડકારો</option>
+            <option value="ch-21">Ch 21: સામાજિક પરિવર્તન</option>
+          </select>
+
+          <label class="builder-label">પ્રશ્ન લખો:</label>
+          <input type="text" id="new-q-text" class="add-q-input" placeholder="દા.ત. શૂન્યની શોધ કયા પ્રાચીન ગણિતશાસ્ત્રીએ કરી હતી?">
+
+          <label class="builder-label">૪ વિકલ્પો અને સાચો વિકલ્પ (રેડિયો ટીક કરો):</label>
+          <div class="add-q-options-grid">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <input type="radio" name="new-q-correct" value="0" checked id="rad-opt-0">
+              <input type="text" id="new-q-opt-0" class="add-q-input" placeholder="વિકલ્પ A (દા.ત. વરાહમિહિર)" style="margin-bottom: 0;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <input type="radio" name="new-q-correct" value="1" id="rad-opt-1">
+              <input type="text" id="new-q-opt-1" class="add-q-input" placeholder="વિકલ્પ B (દા.ત. ભાસ્કરાચાર્ય)" style="margin-bottom: 0;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <input type="radio" name="new-q-correct" value="2" id="rad-opt-2">
+              <input type="text" id="new-q-opt-2" class="add-q-input" placeholder="વિકલ્પ C (દા.ત. આર્યભટ્ટ)" style="margin-bottom: 0;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <input type="radio" name="new-q-correct" value="3" id="rad-opt-3">
+              <input type="text" id="new-q-opt-3" class="add-q-input" placeholder="વિકલ્પ D (દા.ત. બ્રહ્મગુપ્ત)" style="margin-bottom: 0;">
+            </div>
+          </div>
+
+          <label class="builder-label">સમજૂતી (Explanation):</label>
+          <input type="text" id="new-q-exp" class="add-q-input" placeholder="દા.ત. આર્યભટ્ટે શૂન્ય અને પાય (3.1416) ની શોધ કરી હતી.">
+
+          <button id="btn-save-new-q" style="width: 100%; background: var(--emerald); color: #0a0f1d; border: none; padding: 10px; border-radius: 8px; font-weight: 800; font-size: 13px; font-family: var(--font-gu); cursor: pointer;">
+            💾 પ્રશ્ન સેવ કરો અને ક્વિઝમાં ઉમેરો
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Live Score & Info Banner -->
+      <div class="quiz-banner" id="quiz-header-banner">
+        <div>
+          <div style="font-size: 14.5px; font-weight: 800; color: #fff;" id="quiz-active-title">📝 બોર્ડ સેલ્ફ-ટેસ્ટ</div>
+          <div style="font-size: 11px; color: #94a3b8; display: flex; align-items: center; gap: 8px;" id="quiz-active-subtitle">
+            <span>કુલ ૫ પ્રશ્નો</span>
+          </div>
+        </div>
+        <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+          <div id="quiz-timer-wrap" style="display: none;">
+            <div class="quiz-timer-badge" id="quiz-timer-badge">⏳ 10:00</div>
+          </div>
+          <div id="quiz-score-wrap">
+            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">સ્કોર</div>
+            <div class="quiz-score-num"><span id="quiz-score-val">0</span> / <span id="quiz-total-val">5</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Action Controls Row -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 8px;">
+        <span id="quiz-status-pill" style="font-size: 11.5px; color: var(--accent); font-weight: 700;">પ્રશ્નોના જવાબો આપો:</span>
+        <div style="display: flex; gap: 8px;">
+          <button id="btn-reset-quiz" style="background: var(--surface); border: 1px solid var(--border); color: var(--accent); padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font-gu);">
+            🔄 ફરીથી આપો
+          </button>
+          <button id="btn-submit-exam" style="display: none; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border: none; color: #fff; padding: 5px 14px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; font-family: var(--font-gu);">
+            ✅ ટેસ્ટ સબમિટ કરો
+          </button>
+        </div>
+      </div>
+
+      <!-- Scorecard View (Displayed after Exam submission) -->
+      <div id="quiz-result-view" style="display: none;"></div>
+
+      <!-- Questions List Container -->
+      <div id="quiz-container"></div>
+    </main>
+
+    <!-- VIEW 4: BOOKMARKED QUESTIONS -->
+    <main id="view-bookmarks" class="view">
+      <div style="background: var(--surface); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 14px; padding: 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 14.5px; font-weight: 800; color: #fbbf24;">⭐ સેવ કરેલા મોસ્ટ IMP પ્રશ્નો</div>
+          <div style="font-size: 11.5px; color: #cbd5e1;">પરીક્ષા પહેલાં 5 મિનિટમાં ક્વિક રિવિઝન માટે સાચવેલી નોટ્સ</div>
+        </div>
+        <button id="btn-clear-bookmarks" style="background: rgba(244, 63, 94, 0.15); border: 1px solid var(--rose); color: var(--rose); padding: 5px 10px; border-radius: 8px; font-size: 11px; cursor: pointer; font-family: var(--font-gu); font-weight: 600;">
+          ક્લીયર કરો
+        </button>
+      </div>
+
+      <div id="bookmarks-container"></div>
+    </main>
+
+    <!-- VIEW 5: BLUEPRINT & MARKS WEIGHTAGE -->
+    <main id="view-blueprint" class="view">
+      <div class="content-card" style="margin-bottom: 14px;">
+        <div class="card-heading">📊 GSEB ધોરણ 10 સામાજિક વિજ્ઞાન - બોર્ડ પેપર માળખું (80 ગુણ)</div>
+        <table class="bp-table">
+          <thead>
+            <tr>
+              <th>વિભાગ</th>
+              <th>પ્રશ્નોનો પ્રકાર</th>
+              <th>પ્રશ્ન સંખ્યા</th>
+              <th>કુલ ગુણ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>વિભાગ A</strong></td>
+              <td>હેતુલક્ષી (MCQ, જોડકાં, ખરાં-ખોટાં, 1 શબ્દ)</td>
+              <td>પ્રશ્ન 1 થી 16</td>
+              <td><strong>16 ગુણ</strong></td>
+            </tr>
+            <tr>
+              <td><strong>વિભાગ B</strong></td>
+              <td>ટૂંકજવાબી પ્રશ્નો (2 ગુણના)</td>
+              <td>કોઈપણ 10 (13 માંથી)</td>
+              <td><strong>20 ગુણ</strong></td>
+            </tr>
+            <tr>
+              <td><strong>વિભાગ C</strong></td>
+              <td>મુદ્દાસર જવાબી પ્રશ્નો (3 ગુણના)</td>
+              <td>કોઈપણ 8 (11 માંથી)</td>
+              <td><strong>24 ગુણ</strong></td>
+            </tr>
+            <tr>
+              <td><strong>વિભાગ D</strong></td>
+              <td>સવિસ્તર પ્રશ્નો (4 ગુણના) + <strong>નકશા પૂર્તિ</strong></td>
+              <td>4 પ્રશ્નો + નકશો</td>
+              <td><strong>20 ગુણ</strong></td>
+            </tr>
+            <tr style="background: rgba(56, 189, 248, 0.1); font-weight: 800;">
+              <td colspan="3" style="text-align: right; color: var(--accent);">કુલ બોર્ડ ગુણ:</td>
+              <td style="color: var(--accent);">80 ગુણ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-card">
+        <div class="card-heading">🎯 સૌથી વધુ ગુણ આપતા મુખ્ય પ્રકરણો (High-Weightage Focus)</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px;">
+          <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+            <div style="color: var(--accent); font-weight: 700; margin-bottom: 2px;">Ch 5: ભારતનો વિજ્ઞાન અને ટેકનોલોજીનો વારસો (4 ગુણ સવિસ્તર)</div>
+            <div style="color: #94a3b8; font-size: 11.5px;">પ્રાચીન ભારતનું ધાતુવિદ્યા, રસાયણશાસ્ત્ર, વૈદક-શલ્ય અને ગણિતશાસ્ત્રમાં પ્રદાન 100% પૂછાય છે.</div>
+          </div>
+          <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+            <div style="color: var(--accent); font-weight: 700; margin-bottom: 2px;">Ch 10: ભારત: કૃષિ (4 ગુણ સવિસ્તર + નકશા પૂર્તિ)</div>
+            <div style="color: #94a3b8; font-size: 11.5px;">કૃષિના પ્રકારો, સંસ્થાગત/ટેકનિકલ સુધારાઓ, ડાંગર-ઘઉં અને રોકડિયા પાકો.</div>
+          </div>
+          <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+            <div style="color: var(--accent); font-weight: 700; margin-bottom: 2px;">Ch 17: આર્થિક સમસ્યાઓ: ગરીબી અને બેરોજગારી (4 ગુણ સવિસ્તર)</div>
+            <div style="color: #94a3b8; font-size: 11.5px;">ગરીબી નિવારણ વ્યૂહરચના, મનરેગા યોજના અને બેરોજગારી ઘટાડવાના સરકારી ઉપાયો.</div>
+          </div>
+          <div style="background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+            <div style="color: var(--accent); font-weight: 700; margin-bottom: 2px;">Ch 21: સામાજિક પરિવર્તન (4 ગુણ સવિસ્તર)</div>
+            <div style="color: #94a3b8; font-size: 11.5px;">બાળ અધિકારો, માહિતી અધિકાર (RTI 2005) અને રાષ્ટ્રીય અન્ન સલામતી કાયદો (NFSA 2013).</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- VIEW 6: CHAPTER DETAIL SCREEN -->
     <main id="view-detail" class="view">
       <!-- Chapter Hero Tag -->
       <div class="detail-header">
@@ -649,11 +1829,14 @@
         <h1 class="detail-title" id="det-title"></h1>
         <div class="detail-en" id="det-en"></div>
 
-        <!-- 1-Click Clean Audio Player -->
-        <div class="listen-row">
-          <button id="btn-listen" class="btn-listen" title="આખા પ્રકરણનો ઓડિયો સારાંશ સાંભળો">
+        <!-- 1-Click Clean Audio Player & Print Button Row -->
+        <div class="listen-row" style="display: flex; gap: 8px;">
+          <button id="btn-listen" class="btn-listen" title="આખા પ્રકરણનો ઓડિયો સારાંશ સાંભળો" style="flex: 2;">
             <span id="listen-icon">🔊</span>
-            <span id="listen-text">પ્રકરણ સારાંશ સાંભળો (Listen Summary)</span>
+            <span id="listen-text">પ્રકરણ સારાંશ સાંભળો</span>
+          </button>
+          <button id="btn-print" class="print-btn" title="પ્રકરણ નોટ્સ પ્રિન્ટ અથવા PDF તરીકે સેવ કરો" style="flex: 1; justify-content: center;">
+            <span>🖨️ પ્રિન્ટ/PDF</span>
           </button>
         </div>
       </div>
@@ -682,6 +1865,7 @@
     </main>
   </div>
 
+  <script src="/quiz-questions.js"></script>
   <script>
     // COMPLETE HANDWRITTEN NOTES DATASET FOR GSEB CLASS 10 SOCIAL SCIENCE
     const CHAPTERS_DATA = [
@@ -1704,18 +2888,35 @@
         </div>
       `;
 
-      // 5. IMP Q&A
+      // 5. IMP Q&A (With 1-Click Bookmark Star)
+      const currentBms = getBookmarks();
       panelImp.innerHTML = `
         <div class="content-card">
           <div class="card-heading">🎯 બોર્ડ પરીક્ષા મોસ્ટ IMP પ્રશ્નોત્તરી (2, 3, 4 ગુણ)</div>
-          ${ch.imp.map(item => `
-            <div class="qa-box">
-              <div class="qa-q"><span class="imp-badge">IMP</span>${item.q}</div>
-              <div class="qa-a">${item.a}</div>
-            </div>
-          `).join("")}
+          ${ch.imp.map((item, idx) => {
+            const isStarred = currentBms.some(b => b.q === item.q);
+            return `
+              <div class="qa-box">
+                <div class="qa-q" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+                  <div><span class="imp-badge">IMP</span>${item.q}</div>
+                  <button class="btn-bm ${isStarred ? 'starred' : ''}" id="bm-btn-${ch.id}-${idx}" title="${isStarred ? 'સેવ કરેલમાંથી હટાવો' : 'પરીક્ષા માટે સેવ કરો'}">
+                    ${isStarred ? '★' : '☆'}
+                  </button>
+                </div>
+                <div class="qa-a">${item.a}</div>
+              </div>
+            `;
+          }).join("")}
         </div>
       `;
+
+      // Attach bookmark click handlers
+      ch.imp.forEach((item, idx) => {
+        const btn = document.getElementById(`bm-btn-${ch.id}-${idx}`);
+        if (btn) {
+          btn.onclick = () => toggleBookmark(ch.code, item.q, item.a, btn);
+        }
+      });
     }
 
     // SWITCH SECTION (Points / Mindmap / Dates / Terms / IMP)
@@ -1736,6 +2937,7 @@
     const btnListen = document.getElementById("btn-listen");
     const listenIcon = document.getElementById("listen-icon");
     const listenText = document.getElementById("listen-text");
+    const btnPrint = document.getElementById("btn-print");
     let isSpeaking = false;
 
     function stopAudio() {
@@ -1746,7 +2948,7 @@
       if (btnListen) {
         btnListen.classList.remove("speaking");
         listenIcon.textContent = "🔊";
-        listenText.textContent = "પ્રકરણ સારાંશ સાંભળો (Listen Summary)";
+        listenText.textContent = "પ્રકરણ સારાંશ સાંભળો";
       }
     }
 
@@ -1788,7 +2990,7 @@
         isSpeaking = true;
         btnListen.classList.add("speaking");
         listenIcon.textContent = "⏹️";
-        listenText.textContent = "ઓડિયો બંધ કરો (Stop Audio)";
+        listenText.textContent = "ઓડિયો બંધ કરો";
       };
 
       utterance.onend = stopAudio;
@@ -1801,11 +3003,943 @@
       btnListen.onclick = toggleAudio;
     }
 
+    if (btnPrint) {
+      btnPrint.onclick = () => {
+        window.print();
+      };
+    }
+
     // Stop audio when navigating away
     const originalBackToHome = backToHome;
     backToHome = function() {
       stopAudio();
       originalBackToHome();
+    };
+
+    // ==========================================
+    // 🗺️ INTERACTIVE BOARD MAP WORK ENGINE (નકશા પૂર્તિ - 4 ગુણ)
+    // ==========================================
+    const MAP_ITEMS = [
+      { id: "map-01", name: "કાંપની જમીન દર્શાવતો પ્રદેશ", cat: "જમીન", state: "ઉત્તર પ્રદેશ / પંજાબ / બિહાર", tip: "ઉત્તર ભારતમાં ગંગા-યમુનાના મેદાનમાં આડી લાઈનો (///) વડે દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 260, y: 195, sym: "▩", symLabel: "કાંપ જમીન", color: "#f59e0b" },
+      { id: "map-02", name: "કાળી (રેગુર) જમીનનો પ્રદેશ", cat: "જમીન", state: "મહારાષ્ટ્ર / ગુજરાત (કાનમ પ્રદેશ)", tip: "દખ્ખણના લાવાના પ્રદેશમાં અથવા ભરૂચ (કાનમ) પાસે દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 165, y: 340, sym: "▩", symLabel: "કાળી જમીન", color: "#94a3b8" },
+      { id: "map-03", name: "રાતી જમીન દર્શાવતો પ્રદેશ", cat: "જમીન", state: "તમિલનાડુ / કર્ણાટક / ઓડિશા", tip: "દક્ષિણ ભારતમાં તમિલનાડુ રાજ્યમાં લાલ બિંદુઓ વડે દર્શાવો.", prob: "⭐⭐⭐⭐", x: 220, y: 440, sym: "▩", symLabel: "રાતી જમીન", color: "#ef4444" },
+      { id: "map-04", name: "પડખાઉ (લેટેરાઇટ) જમીન", cat: "જમીન", state: "પશ્ચિમ ઘાટના ઢોળાવો (કેરળ/ગોવા)", tip: "પશ્ચિમ દરિયાકિનારાની સાંકડી પટ્ટીમાં વધુ વરસાદવાળા ભાગમાં દર્શાવો.", prob: "⭐⭐⭐⭐", x: 175, y: 460, sym: "▩", symLabel: "પડખાઉ જમીન", color: "#d97706" },
+      { id: "map-05", name: "રણ પ્રકારની જમીન", cat: "જમીન", state: "રાજસ્થાન (થરનું રણ) / કચ્છ", tip: "પશ્ચિમ ભારતમાં રાજસ્થાન રાજ્યમાં રેતીની સંજ્ઞાથી દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 110, y: 215, sym: "▩", symLabel: "રણ જમીન", color: "#eab308" },
+      { id: "map-06", name: "ઘઉં પકવતો મુખ્ય પ્રદેશ (કોઠાર)", cat: "પાક", state: "પંજાબ / હરિયાણા / ગુજરાત (ભાલ)", tip: "પંજાબ રાજ્યમાં વર્તુળ (○) અને 'ઘઉં' સંજ્ઞા દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 155, y: 145, sym: "🌾", symLabel: "ઘઉં", color: "#10b981" },
+      { id: "map-07", name: "ડાંગર પકવતો મુખ્ય પ્રદેશ", cat: "પાક", state: "પશ્ચિમ બંગાળ / તમિલનાડુ", tip: "પશ્ચિમ બંગાળ અથવા આંધ્રપ્રદેશના ડેલ્ટા મુખત્રિકોણમાં દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 360, y: 285, sym: "🌾", symLabel: "ડાંગર", color: "#34d399" },
+      { id: "map-08", name: "કપાસ પકવતો પ્રદેશ (કાનમ)", cat: "પાક", state: "ગુજરાત (ભરૂચ કાનમ પ્રદેશ)", tip: "નર્મદા-ઢાઢર નદી વચ્ચેના કાનમ વિસ્તારમાં દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 118, y: 310, sym: "🌾", symLabel: "કપાસ", color: "#38bdf8" },
+      { id: "map-09", name: "મગફળી ઉત્પાદક મોખરાનો પ્રદેશ", cat: "પાક", state: "ગુજરાત (જૂનાગઢ/સૌરાષ્ટ્ર)", tip: "ગુજરાતમાં જૂનાગઢ પાસે મગફળી સંજ્ઞા મૂકો.", prob: "⭐⭐⭐⭐", x: 88, y: 320, sym: "🌾", symLabel: "મગફળી", color: "#fbbf24" },
+      { id: "map-10", name: "ચા પકવતો પ્રદેશ", cat: "પાક", state: "અસમ (બ્રહ્મપુત્રા ખીણ)", tip: "પૂર્વોત્તર ભારતમાં અસમ રાજ્યના પહાડી ઢોળાવ પર દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 435, y: 195, sym: "🌾", symLabel: "ચા", color: "#10b981" },
+      { id: "map-11", name: "કોફી પકવતો જાણીતો પ્રદેશ", cat: "પાક", state: "કર્ણાટક (કુર્ગ જિલ્લો)", tip: "દક્ષિણ ભારતમાં કર્ણાટકના પહાડી વિસ્તારમાં દર્શાવો.", prob: "⭐⭐⭐⭐", x: 175, y: 430, sym: "🌾", symLabel: "કોફી", color: "#a16207" },
+      { id: "map-12", name: "ગીર રાષ્ટ્રીય ઉદ્યાન (સિંહ)", cat: "વન્યજીવ", state: "ગુજરાત (જૂનાગઢ / ગીર સોમનાથ)", tip: "સૌરાષ્ટ્રના દક્ષિણ ભાગમાં ત્રિકોણ (▲) ની સંજ્ઞાથી દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 86, y: 335, sym: "▲", symLabel: "ગીર (સિંહ)", color: "#fb7185" },
+      { id: "map-13", name: "કાઝીરંગા રાષ્ટ્રીય ઉદ્યાન (ગેંડો)", cat: "વન્યજીવ", state: "અસમ", tip: "અસમમાં બ્રહ્મપુત્રા નદી કાંઠે ત્રિકોણ (▲) થી દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 445, y: 185, sym: "▲", symLabel: "કાઝીરંગા", color: "#fb7185" },
+      { id: "map-14", name: "જિમ કોર્બેટ રાષ્ટ્રીય ઉદ્યાન (વાઘ)", cat: "વન્યજીવ", state: "ઉત્તરાખંડ (નૈનીતાલ)", tip: "ભારતનું પ્રથમ રાષ્ટ્રીય ઉદ્યાન, હિમાલયની તળેટીમાં દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 215, y: 145, sym: "▲", symLabel: "જિમ કોર્બેટ", color: "#fb7185" },
+      { id: "map-15", name: "પેરિયાર અભયારણ્ય (હાથી)", cat: "વન્યજીવ", state: "કેરળ", tip: "દક્ષિણ ભારતમાં કેરળ રાજ્યના પહાડી વિસ્તારમાં દર્શાવો.", prob: "⭐⭐⭐⭐", x: 185, y: 505, sym: "▲", symLabel: "પેરિયાર", color: "#fb7185" },
+      { id: "map-16", name: "સરદાર સરોવર યોજના (નર્મદા)", cat: "સિંચાઈ", state: "ગુજરાત (કેવડિયા/નવાગામ)", tip: "નર્મદા નદી પર બંધની સંજ્ઞા (II) મૂકી નામ લખો.", prob: "⭐⭐⭐⭐⭐", x: 135, y: 315, sym: "🌊", symLabel: "સરદાર સરોવર", color: "#38bdf8" },
+      { id: "map-17", name: "ભાખરા-નાંગલ યોજના (સતલુજ)", cat: "સિંચાઈ", state: "પંજાબ - હિમાચલ પ્રદેશ સરહદ", tip: "સતલુજ નદી પર ઉત્તર ભારતમાં સૌથી ઊંચો બંધ દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 170, y: 135, sym: "🌊", symLabel: "ભાખરા-નાંગલ", color: "#38bdf8" },
+      { id: "map-18", name: "હીરાકુડ યોજના (મહાનદી)", cat: "સિંચાઈ", state: "ઓડિશા (સંબલપુર)", tip: "મહાનદી પર ભારતનો સૌથી લાંબો બંધ દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 310, y: 305, sym: "🌊", symLabel: "હીરાકુડ", color: "#38bdf8" },
+      { id: "map-19", name: "કોલસા ક્ષેત્ર: ઝરિયા", cat: "ખનીજ", state: "ઝારખંડ (ધનબાદ)", tip: "દામોદર નદી ખીણમાં દેશની સૌથી મોટી કોલસા ખાણ દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 335, y: 260, sym: "⛏️", symLabel: "ઝરિયા કોલસો", color: "#94a3b8" },
+      { id: "map-20", name: "બોક્સાઈટ ક્ષેત્ર: કોરાપુટ", cat: "ખનીજ", state: "ઓડિશા", tip: "ઓડિશાના દક્ષિણ ભાગમાં ચોરસ સંજ્ઞાથી દર્શાવો.", prob: "⭐⭐⭐⭐", x: 295, y: 350, sym: "⛏️", symLabel: "બોક્સાઈટ", color: "#f59e0b" },
+      { id: "map-21", name: "લોખંડ-પોલાદ: જમશેદપુર (TISCO)", cat: "ખનીજ", state: "ઝારખંડ (સુવર્ણરેખા કાંઠે)", tip: "1907 માં સ્થપાયેલ પ્રથમ આધુનિક સ્ટીલ નગર દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 345, y: 275, sym: "⛏️", symLabel: "TISCO", color: "#60a5fa" },
+      { id: "map-22", name: "કંડલા મુક્ત વ્યાપાર બંદર (SEZ)", cat: "ખનીજ", state: "ગુજરાત (કચ્છનો અખાત)", tip: "કચ્છના અખાતના ખૂણા પર બંદરની સંજ્ઞા (⚓) દર્શાવો.", prob: "⭐⭐⭐⭐⭐", x: 75, y: 275, sym: "⚓", symLabel: "કંડલા બંદર", color: "#c084fc" }
+    ];
+
+    let activeMapCat = "all";
+    let activeMapLocationId = null;
+    let isMapTestMode = false;
+
+    const mapItemsList = document.getElementById("map-items-list");
+    const mapSearchInput = document.getElementById("map-search-input");
+    const mapCatBtns = document.querySelectorAll(".map-cat-btn");
+    const mapPinsGroup = document.getElementById("map-pins-group");
+    const indiaSvgWrap = document.getElementById("india-svg-wrap");
+    const mapActivePopup = document.getElementById("map-active-popup");
+    const mapPopName = document.getElementById("map-pop-name");
+    const mapPopState = document.getElementById("map-pop-state");
+    const mapPopTip = document.getElementById("map-pop-tip");
+    const btnMapStudyMode = document.getElementById("btn-map-study-mode");
+    const btnMapTestMode = document.getElementById("btn-map-test-mode");
+    const btnPrintBlankMap = document.getElementById("btn-print-blank-map");
+
+    // Render SVG Map Pins
+    function renderMapPins() {
+      if (!mapPinsGroup) return;
+
+      const q = mapSearchInput ? mapSearchInput.value.toLowerCase().trim() : "";
+      const filtered = MAP_ITEMS.filter(item => {
+        const matchesCat = activeMapCat === "all" || item.cat === activeMapCat;
+        if (!matchesCat) return false;
+        if (!q) return true;
+        return item.name.toLowerCase().includes(q) || item.state.toLowerCase().includes(q) || item.tip.toLowerCase().includes(q);
+      });
+
+      mapPinsGroup.innerHTML = filtered.map(item => {
+        const isSelected = activeMapLocationId === item.id;
+        return `
+          <g class="map-pin ${isSelected ? 'active' : ''}" id="svg-pin-${item.id}" onclick="window.focusMapLocation('${item.id}')">
+            <!-- Pin Outer Pulse Halo -->
+            <circle cx="${item.x}" cy="${item.y}" r="${isSelected ? 10 : 7}" fill="${item.color}" opacity="${isSelected ? 0.45 : 0.25}"/>
+            <!-- Pin Core Circle -->
+            <circle cx="${item.x}" cy="${item.y}" r="${isSelected ? 6 : 4.5}" fill="${item.color}" stroke="#fff" stroke-width="1.2"/>
+            <!-- Pin Symbol Icon / Character -->
+            <text x="${item.x}" y="${item.y - 8}" text-anchor="middle" font-size="8" fill="#fff">${item.sym}</text>
+            <!-- Pin Label -->
+            <text x="${item.x + 8}" y="${item.y + 3}" text-anchor="start">${item.symLabel}</text>
+          </g>
+        `;
+      }).join("");
+    }
+
+    // Focus & Highlight Specific Map Location
+    window.focusMapLocation = function(id) {
+      activeMapLocationId = id;
+      const item = MAP_ITEMS.find(m => m.id === id);
+      if (!item) return;
+
+      // Update active pin visual
+      document.querySelectorAll(".map-pin").forEach(p => p.classList.remove("active"));
+      const targetPin = document.getElementById(`svg-pin-${id}`);
+      if (targetPin) {
+        targetPin.classList.add("active");
+        if (isMapTestMode) targetPin.classList.add("revealed");
+      }
+
+      // Show Popup Card
+      if (mapActivePopup && mapPopName && mapPopState && mapPopTip) {
+        mapPopName.innerHTML = `${item.sym} ${item.name}`;
+        mapPopState.textContent = `📍 રાજ્ય / પ્રદેશ: ${item.state}`;
+        mapPopTip.innerHTML = `💡 <strong>બોર્ડ નકશા ટિપ:</strong> ${item.tip}`;
+        mapActivePopup.style.display = "block";
+      }
+
+      // Highlight in List below
+      document.querySelectorAll(".map-item-card").forEach(c => c.classList.remove("highlighted"));
+      const targetCard = document.getElementById(`mcard-${id}`);
+      if (targetCard) {
+        targetCard.classList.add("highlighted");
+      }
+
+      // Scroll Map into view if clicked from card
+      if (indiaSvgWrap && window.scrollY > 400) {
+        indiaSvgWrap.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    };
+
+    // Render Cards in List
+    function renderMapItems() {
+      const q = mapSearchInput ? mapSearchInput.value.toLowerCase().trim() : "";
+      if (!mapItemsList) return;
+
+      const filtered = MAP_ITEMS.filter(item => {
+        const matchesCat = activeMapCat === "all" || item.cat === activeMapCat;
+        if (!matchesCat) return false;
+        if (!q) return true;
+        return item.name.toLowerCase().includes(q) || item.state.toLowerCase().includes(q) || item.tip.toLowerCase().includes(q);
+      });
+
+      renderMapPins();
+
+      if (filtered.length === 0) {
+        mapItemsList.innerHTML = `<div style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px;">કોઈ સ્થળ મળ્યું નથી.</div>`;
+        return;
+      }
+
+      mapItemsList.innerHTML = filtered.map(item => `
+        <div class="map-item-card ${activeMapLocationId === item.id ? 'highlighted' : ''}" id="mcard-${item.id}">
+          <div class="map-item-header">
+            <div class="map-item-title">${item.sym} ${item.name}</div>
+            <span class="map-tag">${item.prob}</span>
+          </div>
+          <div class="map-loc">📍 રાજ્ય / પ્રદેશ: ${item.state}</div>
+          <div class="map-tip">💡 <strong>નકશા સંજ્ઞા ટિપ:</strong> ${item.tip}</div>
+          <button class="btn-show-on-map" onclick="window.focusMapLocation('${item.id}')">
+            <span>📍 નકશામાં જુઓ</span>
+          </button>
+        </div>
+      `).join("");
+    }
+
+    if (mapSearchInput) {
+      mapSearchInput.oninput = renderMapItems;
+    }
+
+    mapCatBtns.forEach(btn => {
+      btn.onclick = () => {
+        mapCatBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeMapCat = btn.dataset.mcat;
+        renderMapItems();
+      };
+    });
+
+    // Map Study vs Test Mode
+    if (btnMapStudyMode && btnMapTestMode) {
+      btnMapStudyMode.onclick = () => {
+        btnMapStudyMode.classList.add("active");
+        btnMapTestMode.classList.remove("active");
+        isMapTestMode = false;
+        if (indiaSvgWrap) indiaSvgWrap.classList.remove("test-mode");
+      };
+
+      btnMapTestMode.onclick = () => {
+        btnMapTestMode.classList.add("active");
+        btnMapStudyMode.classList.remove("active");
+        isMapTestMode = true;
+        if (indiaSvgWrap) indiaSvgWrap.classList.add("test-mode");
+      };
+    }
+
+    // Print Blank Practice Map
+    if (btnPrintBlankMap) {
+      btnPrintBlankMap.onclick = () => {
+        document.body.classList.add("printing-quiz");
+        window.print();
+        setTimeout(() => {
+          document.body.classList.remove("printing-quiz");
+        }, 1000);
+      };
+    }
+
+    // Initial Map Render
+    renderMapItems();
+
+    // ==========================================
+    // 📝 COMPREHENSIVE CUSTOM MOCK QUIZ ENGINE & TEST CENTER
+    // ==========================================
+
+    // User-created custom questions storage
+    function getUserCustomQuestions() {
+      try {
+        return JSON.parse(localStorage.getItem("gseb10_custom_user_questions") || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveUserCustomQuestion(item) {
+      const list = getUserCustomQuestions();
+      list.unshift(item);
+      localStorage.setItem("gseb10_custom_user_questions", JSON.stringify(list));
+      updateMyQuestionsUI();
+    }
+
+    function deleteUserCustomQuestion(id) {
+      let list = getUserCustomQuestions();
+      list = list.filter(q => q.id !== id);
+      localStorage.setItem("gseb10_custom_user_questions", JSON.stringify(list));
+      updateMyQuestionsUI();
+    }
+
+    function getAllQuestions() {
+      const builtin = window.BUILTIN_QUIZ_QUESTIONS || [];
+      const custom = getUserCustomQuestions();
+      return [...custom, ...builtin];
+    }
+
+    // State Variables
+    let activeQuizList = [];
+    let quizAnswers = {};
+    let selectedQuizCount = 5;
+    let activeQuizMode = "practice"; // "practice" or "exam"
+    let activeSelectionSubtab = "dropdown"; // "dropdown", "multiselect", "myquestions"
+    let examTimerInterval = null;
+    let examTimeRemainingSeconds = 0;
+    let isExamSubmitted = false;
+
+    // DOM Elements
+    const quizContainer = document.getElementById("quiz-container");
+    const quizResultView = document.getElementById("quiz-result-view");
+    const quizScoreVal = document.getElementById("quiz-score-val");
+    const quizTotalVal = document.getElementById("quiz-total-val");
+    const quizActiveTitle = document.getElementById("quiz-active-title");
+    const quizActiveSubtitle = document.getElementById("quiz-active-subtitle");
+    const builderChSelect = document.getElementById("builder-ch-select");
+    const btnGenerateQuiz = document.getElementById("btn-generate-quiz");
+    const btnResetQuiz = document.getElementById("btn-reset-quiz");
+    const btnSubmitExam = document.getElementById("btn-submit-exam");
+    const builderCountBtns = document.querySelectorAll(".builder-count-btn");
+    const modeCards = document.querySelectorAll(".quiz-mode-card");
+    const builderSubtabs = document.querySelectorAll(".builder-subtab");
+    const stabPanelDropdown = document.getElementById("stab-panel-dropdown");
+    const stabPanelMultiselect = document.getElementById("stab-panel-multiselect");
+    const stabPanelMyquestions = document.getElementById("stab-panel-myquestions");
+    const chCheckboxesContainer = document.getElementById("ch-checkboxes-container");
+    const myQCountBadge = document.getElementById("my-q-count");
+    const bankTotalBadge = document.getElementById("bank-total-badge");
+    const myQList = document.getElementById("my-q-list");
+    const btnClearMyQ = document.getElementById("btn-clear-my-q");
+
+    // Add Question Panel Elements
+    const btnToggleAddQ = document.getElementById("btn-toggle-add-q");
+    const btnCloseAddQ = document.getElementById("btn-close-add-q");
+    const addQPanel = document.getElementById("add-q-panel");
+    const btnSaveNewQ = document.getElementById("btn-save-new-q");
+    const newQCh = document.getElementById("new-q-ch");
+    const newQText = document.getElementById("new-q-text");
+    const newQExp = document.getElementById("new-q-exp");
+    const btnPrintTest = document.getElementById("btn-print-test");
+
+    // Timer Elements
+    const quizTimerWrap = document.getElementById("quiz-timer-wrap");
+    const quizTimerBadge = document.getElementById("quiz-timer-badge");
+    const quizScoreWrap = document.getElementById("quiz-score-wrap");
+
+    // Initialize 19 Chapter Checkboxes
+    function initChapterCheckboxes() {
+      if (!chCheckboxesContainer) return;
+      chCheckboxesContainer.innerHTML = CHAPTERS_DATA.map(ch => `
+        <label class="ch-cb-label">
+          <input type="checkbox" class="ch-cb" value="${ch.id}" data-cat="${ch.cat}" checked>
+          <span>Ch ${ch.num}: ${ch.titleGu.split(":")[0].substring(0, 14)}</span>
+        </label>
+      `).join("");
+    }
+
+    // Update Badges & My Questions List
+    function updateMyQuestionsUI() {
+      const myQs = getUserCustomQuestions();
+      const allQs = getAllQuestions();
+      if (myQCountBadge) myQCountBadge.textContent = myQs.length;
+      if (bankTotalBadge) bankTotalBadge.textContent = `${allQs.length}+ પ્રશ્નો ઉપલબ્ધ`;
+
+      if (myQList) {
+        if (myQs.length === 0) {
+          myQList.innerHTML = `<div style="color: var(--text-muted); font-size: 11.5px; padding: 6px 0;">હજુ સુધી તમે કોઈ પ્રશ્ન ઉમેર્યો નથી. 'મારો પ્રશ્ન ઉમેરો' પર ક્લિક કરીને ઉમેરી શકો છો.</div>`;
+        } else {
+          myQList.innerHTML = myQs.map(q => `
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 6px; padding: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+              <div>
+                <span class="detail-ch-tag" style="font-size: 9px; padding: 1px 5px; margin-bottom: 2px;">Ch ${q.chId.replace("ch-", "")}</span>
+                <div style="font-weight: 600; color: #fff; font-size: 11.5px;">${q.q}</div>
+              </div>
+              <button onclick="window.removeCustomQuestion('${q.id}')" style="background: rgba(244, 63, 94, 0.15); border: 1px solid var(--rose); color: var(--rose); border-radius: 4px; padding: 2px 6px; font-size: 10px; cursor: pointer;">હટાવો</button>
+            </div>
+          `).join("");
+        }
+      }
+    }
+
+    window.removeCustomQuestion = function(id) {
+      if (confirm("શું તમે આ પ્રશ્ન હટાવવા માંગો છો?")) {
+        deleteUserCustomQuestion(id);
+      }
+    };
+
+    if (btnClearMyQ) {
+      btnClearMyQ.onclick = () => {
+        if (confirm("શું તમે તમારા ઉમેરેલા બધા પ્રશ્નો કાઢી નાખવા માંગો છો?")) {
+          localStorage.removeItem("gseb10_custom_user_questions");
+          updateMyQuestionsUI();
+        }
+      };
+    }
+
+    // Subtabs click handler
+    builderSubtabs.forEach(tab => {
+      tab.onclick = () => {
+        builderSubtabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        activeSelectionSubtab = tab.dataset.stab;
+
+        if (stabPanelDropdown) stabPanelDropdown.style.display = activeSelectionSubtab === "dropdown" ? "block" : "none";
+        if (stabPanelMultiselect) stabPanelMultiselect.style.display = activeSelectionSubtab === "multiselect" ? "block" : "none";
+        if (stabPanelMyquestions) stabPanelMyquestions.style.display = activeSelectionSubtab === "myquestions" ? "block" : "none";
+      };
+    });
+
+    // Multi-Chapter Quick Action buttons
+    const btnChAll = document.getElementById("btn-ch-all");
+    const btnChHist = document.getElementById("btn-ch-hist");
+    const btnChGeo = document.getElementById("btn-ch-geo");
+    const btnChEco = document.getElementById("btn-ch-eco");
+    const btnChCiv = document.getElementById("btn-ch-civ");
+    const btnChNone = document.getElementById("btn-ch-none");
+
+    function setCheckboxesByFilter(fn) {
+      document.querySelectorAll(".ch-cb").forEach(cb => {
+        cb.checked = fn(cb);
+      });
+    }
+
+    if (btnChAll) btnChAll.onclick = () => setCheckboxesByFilter(() => true);
+    if (btnChNone) btnChNone.onclick = () => setCheckboxesByFilter(() => false);
+    if (btnChHist) btnChHist.onclick = () => setCheckboxesByFilter(cb => cb.dataset.cat === "ઇતિહાસ");
+    if (btnChGeo) btnChGeo.onclick = () => setCheckboxesByFilter(cb => cb.dataset.cat === "ભૂગોળ");
+    if (btnChEco) btnChEco.onclick = () => setCheckboxesByFilter(cb => cb.dataset.cat === "અર્થશાસ્ત્ર");
+    if (btnChCiv) btnChCiv.onclick = () => setCheckboxesByFilter(cb => cb.dataset.cat === "નાગરિક");
+
+    // Mode Selector (Practice vs Exam)
+    modeCards.forEach(card => {
+      card.onclick = () => {
+        modeCards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+        activeQuizMode = card.dataset.mode;
+      };
+    });
+
+    // Toggle Add Question Panel
+    if (btnToggleAddQ && addQPanel) {
+      btnToggleAddQ.onclick = () => {
+        addQPanel.style.display = addQPanel.style.display === "none" || !addQPanel.style.display ? "block" : "none";
+        if (addQPanel.style.display === "block") {
+          addQPanel.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      };
+    }
+    if (btnCloseAddQ && addQPanel) {
+      btnCloseAddQ.onclick = () => {
+        addQPanel.style.display = "none";
+      };
+    }
+
+    // Save New Custom Question
+    if (btnSaveNewQ) {
+      btnSaveNewQ.onclick = () => {
+        const qText = newQText ? newQText.value.trim() : "";
+        if (!qText) {
+          alert("કૃપા કરીને પ્રશ્ન લખો!");
+          return;
+        }
+
+        const opt0 = document.getElementById("new-q-opt-0")?.value.trim() || "";
+        const opt1 = document.getElementById("new-q-opt-1")?.value.trim() || "";
+        const opt2 = document.getElementById("new-q-opt-2")?.value.trim() || "";
+        const opt3 = document.getElementById("new-q-opt-3")?.value.trim() || "";
+
+        if (!opt0 || !opt1) {
+          alert("ઓછામાં ઓછા બે વિકલ્પો લખવા જરૂરી છે!");
+          return;
+        }
+
+        const correctRadio = document.querySelector('input[name="new-q-correct"]:checked');
+        const correctIdx = correctRadio ? parseInt(correctRadio.value, 10) : 0;
+        const selectedChId = newQCh ? newQCh.value : "ch-01";
+        const matchedCh = CHAPTERS_DATA.find(c => c.id === selectedChId);
+
+        const newQObj = {
+          id: "custom-" + Date.now(),
+          chId: selectedChId,
+          cat: matchedCh ? matchedCh.cat : "ઇતિહાસ",
+          q: qText,
+          opts: [opt0, opt1, opt2, opt3].filter(Boolean),
+          correct: correctIdx,
+          exp: newQExp && newQExp.value.trim() ? newQExp.value.trim() : "તમારા દ્વારા ઉમેરેલ પ્રશ્ન."
+        };
+
+        saveUserCustomQuestion(newQObj);
+        alert("🎉 તમારો નવો પ્રશ્ન સફળતાપૂર્વક સેવ થઈ ગયો છે!");
+
+        // Clear form
+        if (newQText) newQText.value = "";
+        if (newQExp) newQExp.value = "";
+        document.getElementById("new-q-opt-0").value = "";
+        document.getElementById("new-q-opt-1").value = "";
+        document.getElementById("new-q-opt-2").value = "";
+        document.getElementById("new-q-opt-3").value = "";
+        if (addQPanel) addQPanel.style.display = "none";
+
+        // Auto regenerate quiz to include it!
+        generateCustomQuiz();
+      };
+    }
+
+    // Printable Test Paper
+    if (btnPrintTest) {
+      btnPrintTest.onclick = () => {
+        document.body.classList.add("printing-quiz");
+        window.print();
+        setTimeout(() => {
+          document.body.classList.remove("printing-quiz");
+        }, 1000);
+      };
+    }
+
+    // Timer Logic for Exam Mode
+    function startExamTimer(seconds) {
+      clearInterval(examTimerInterval);
+      examTimeRemainingSeconds = seconds;
+
+      function updateTimerDisplay() {
+        const mins = Math.floor(examTimeRemainingSeconds / 60);
+        const secs = examTimeRemainingSeconds % 60;
+        const formatted = `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+        if (quizTimerBadge) {
+          quizTimerBadge.textContent = `⏳ ${formatted}`;
+          if (examTimeRemainingSeconds <= 120) {
+            quizTimerBadge.classList.add("urgent");
+          } else {
+            quizTimerBadge.classList.remove("urgent");
+          }
+        }
+
+        if (examTimeRemainingSeconds <= 0) {
+          clearInterval(examTimerInterval);
+          submitExamTest(true);
+        }
+        examTimeRemainingSeconds--;
+      }
+
+      updateTimerDisplay();
+      examTimerInterval = setInterval(updateTimerDisplay, 1000);
+    }
+
+    function stopExamTimer() {
+      clearInterval(examTimerInterval);
+      examTimerInterval = null;
+    }
+
+    // Generate Custom Quiz
+    function generateCustomQuiz() {
+      stopExamTimer();
+      isExamSubmitted = false;
+      quizAnswers = {};
+      if (quizResultView) quizResultView.style.display = "none";
+
+      const allQuestions = getAllQuestions();
+      let filtered = [];
+      let selectionTitle = "સંપૂર્ણ મોક ટેસ્ટ";
+
+      if (activeSelectionSubtab === "myquestions") {
+        filtered = getUserCustomQuestions();
+        selectionTitle = "મારા ઉમેરેલા પ્રશ્નોનો ટેસ્ટ";
+        if (filtered.length === 0) {
+          filtered = [...allQuestions];
+          selectionTitle = "સંપૂર્ણ અભ્યાસક્રમ (તમારા પ્રશ્નો ખાલી હોવાથી)";
+        }
+      } else if (activeSelectionSubtab === "multiselect") {
+        const checkedCbs = Array.from(document.querySelectorAll(".ch-cb:checked"));
+        const selectedChIds = checkedCbs.map(cb => cb.value);
+        if (selectedChIds.length === 0) {
+          filtered = [...allQuestions];
+          selectionTitle = "સંપૂર્ણ અભ્યાસક્રમ (કોઈ ચેપ્ટર ટીક ન હોવાથી)";
+        } else {
+          filtered = allQuestions.filter(q => selectedChIds.includes(q.chId));
+          selectionTitle = `પસંદ કરેલા ${selectedChIds.length} પ્રકરણોનો ટેસ્ટ`;
+        }
+      } else {
+        // Dropdown selection
+        const selectedFilter = builderChSelect ? builderChSelect.value : "all";
+        if (selectedFilter === "all") {
+          filtered = [...allQuestions];
+          selectionTitle = "સંપૂર્ણ અભ્યાસક્રમ (19 પ્રકરણો)";
+        } else if (selectedFilter.startsWith("cat-")) {
+          const targetCat = selectedFilter.replace("cat-", "");
+          filtered = allQuestions.filter(q => q.cat === targetCat);
+          selectionTitle = `ફક્ત ${targetCat} વિભાગનો ટેસ્ટ`;
+        } else {
+          filtered = allQuestions.filter(q => q.chId === selectedFilter);
+          const foundCh = CHAPTERS_DATA.find(c => c.id === selectedFilter);
+          selectionTitle = foundCh ? `Ch ${foundCh.num}: ${foundCh.titleGu}` : selectedFilter;
+        }
+      }
+
+      if (filtered.length === 0) {
+        filtered = [...allQuestions];
+      }
+
+      // Shuffle Questions (Fisher-Yates)
+      const shuffled = [...filtered].sort(() => 0.5 - Math.random());
+
+      // Slice to selected count
+      let count = selectedQuizCount;
+      if (count === "all" || count > shuffled.length) {
+        count = shuffled.length;
+      }
+      activeQuizList = shuffled.slice(0, count);
+
+      // Setup Titles & Banner
+      if (quizActiveTitle) quizActiveTitle.textContent = `📝 ${selectionTitle}`;
+      if (quizActiveSubtitle) {
+        const modeLabel = activeQuizMode === "exam" ? "⏱️ બોર્ડ એક્ઝામ મોડ" : "⚡ પ્રેક્ટિસ મોડ";
+        quizActiveSubtitle.innerHTML = `<span>કુલ ${activeQuizList.length} પ્રશ્નો</span> • <span style="color: var(--accent);">${modeLabel}</span>`;
+      }
+
+      // Setup Exam Mode / Practice Mode Controls
+      if (activeQuizMode === "exam") {
+        if (quizTimerWrap) quizTimerWrap.style.display = "block";
+        if (quizScoreWrap) quizScoreWrap.style.display = "none";
+        if (btnSubmitExam) btnSubmitExam.style.display = "inline-block";
+        // 1 minute per question for realistic exam experience
+        startExamTimer(Math.max(activeQuizList.length * 60, 180));
+      } else {
+        if (quizTimerWrap) quizTimerWrap.style.display = "none";
+        if (quizScoreWrap) quizScoreWrap.style.display = "block";
+        if (btnSubmitExam) btnSubmitExam.style.display = "none";
+      }
+
+      renderQuiz();
+    }
+
+    function renderQuiz() {
+      if (!quizContainer) return;
+      if (activeQuizList.length === 0) {
+        generateCustomQuiz();
+        return;
+      }
+
+      if (quizTotalVal) quizTotalVal.textContent = activeQuizList.length;
+
+      let score = 0;
+      Object.keys(quizAnswers).forEach(qIdx => {
+        if (quizAnswers[qIdx] === activeQuizList[qIdx].correct) score++;
+      });
+      if (quizScoreVal) quizScoreVal.textContent = score;
+
+      quizContainer.innerHTML = activeQuizList.map((q, qIdx) => {
+        const selected = quizAnswers[qIdx];
+        const isAnswered = selected !== undefined;
+
+        return `
+          <div class="quiz-card" id="qcard-${qIdx}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="detail-ch-tag" style="margin-bottom: 0;">${q.cat} (Ch ${q.chId.replace("ch-", "")})</span>
+              <span style="font-size: 11px; color: var(--text-muted);">પ્રશ્ન ${qIdx + 1} / ${activeQuizList.length}</span>
+            </div>
+            <div class="quiz-q-title">${q.q}</div>
+            <div class="quiz-options">
+              ${q.opts.map((opt, optIdx) => {
+                let optClass = "quiz-opt";
+                if (activeQuizMode === "exam") {
+                  if (!isExamSubmitted) {
+                    if (selected === optIdx) optClass += " selected";
+                  } else {
+                    if (optIdx === q.correct) optClass += " correct";
+                    else if (selected === optIdx) optClass += " wrong";
+                  }
+                } else {
+                  // Practice Mode
+                  if (isAnswered) {
+                    if (optIdx === q.correct) optClass += " correct";
+                    else if (selected === optIdx) optClass += " wrong";
+                  }
+                }
+                const isDisabled = activeQuizMode === "exam" ? isExamSubmitted : isAnswered;
+                return `
+                  <button class="${optClass}" onclick="handleQuizAnswer(${qIdx}, ${optIdx})" ${isDisabled ? 'disabled' : ''}>
+                    ${opt}
+                  </button>
+                `;
+              }).join("")}
+            </div>
+            ${((activeQuizMode === "practice" && isAnswered) || (activeQuizMode === "exam" && isExamSubmitted)) ? `
+              <div class="quiz-expl" style="display: block;">
+                💡 <strong>સમજૂતી:</strong> ${q.exp}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join("");
+    }
+
+    window.handleQuizAnswer = function(qIdx, optIdx) {
+      if (activeQuizMode === "practice") {
+        if (quizAnswers[qIdx] !== undefined) return;
+        quizAnswers[qIdx] = optIdx;
+      } else {
+        // Exam Mode: can change answer before submitting
+        if (isExamSubmitted) return;
+        quizAnswers[qIdx] = optIdx;
+      }
+      renderQuiz();
+    };
+
+    function submitExamTest(isTimeout = false) {
+      stopExamTimer();
+      isExamSubmitted = true;
+
+      let correctCount = 0;
+      let wrongCount = 0;
+      let unattemptedCount = 0;
+
+      activeQuizList.forEach((q, idx) => {
+        if (quizAnswers[idx] === undefined) {
+          unattemptedCount++;
+        } else if (quizAnswers[idx] === q.correct) {
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      });
+
+      const total = activeQuizList.length;
+      const pct = Math.round((correctCount / total) * 100);
+
+      // Grade calculation
+      let grade = "A1";
+      let gradeColor = "#34d399";
+      let feedback = "ઉત્કૃષ્ટ દેખાવ! બોર્ડ પરીક્ષામાં ટોપ કરશો!";
+      if (pct < 33) {
+        grade = "D";
+        gradeColor = "#fb7185";
+        feedback = "વધુ વાંચનની જરૂર છે. નોટ્સ અને સાલવારી ફરીથી તૈયાર કરો.";
+      } else if (pct < 50) {
+        grade = "C2";
+        gradeColor = "#fbbf24";
+        feedback = "સારું છે, પરંતુ હજુ રિવિઝન વધારવું પડશે.";
+      } else if (pct < 70) {
+        grade = "B1";
+        gradeColor = "#38bdf8";
+        feedback = "ખૂબ સારો દેખાવ! ભૂલો તપાસીને સુધારો.";
+      } else if (pct < 90) {
+        grade = "A2";
+        gradeColor = "#34d399";
+        feedback = "શાનદાર સ્કોર! તમારું લક્ષ્ય 80/80 છે!";
+      }
+
+      if (quizResultView) {
+        quizResultView.innerHTML = `
+          <div class="quiz-result-card">
+            <div style="font-size: 13px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">
+              ${isTimeout ? "⏰ સમય સમાપ્ત - બોર્ડ સ્કોર કાર્ડ" : "🏆 બોર્ડ મોક ટેસ્ટ પરિણામ"}
+            </div>
+            <div class="result-grade-badge" style="border-color: ${gradeColor}; color: ${gradeColor};">${grade}</div>
+            <div style="font-size: 26px; font-weight: 900; color: #fff;">${correctCount} / ${total} <span style="font-size: 16px; color: ${gradeColor};">(${pct}%)</span></div>
+            <div style="font-size: 12.5px; color: #cbd5e1; margin-top: 4px;">${feedback}</div>
+
+            <div class="result-stats-grid">
+              <div class="result-stat-box">
+                <div class="result-stat-num" style="color: #34d399;">${correctCount}</div>
+                <div class="result-stat-label">સાચા જવાબો</div>
+              </div>
+              <div class="result-stat-box">
+                <div class="result-stat-num" style="color: #fb7185;">${wrongCount}</div>
+                <div class="result-stat-label">ખોટા જવાબો</div>
+              </div>
+              <div class="result-stat-box">
+                <div class="result-stat-num" style="color: var(--amber);">${unattemptedCount}</div>
+                <div class="result-stat-label">છોડેલા પ્રશ્નો</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px;">
+              <button onclick="window.scrollToQuestions()" style="flex: 1; background: var(--surface); border: 1px solid var(--accent); color: var(--accent); padding: 9px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font-gu);">
+                🔍 જવાબો અને સમજૂતી જુઓ
+              </button>
+              <button onclick="window.generateNewTestFromCard()" style="flex: 1; background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%); border: none; color: #fff; padding: 9px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; font-family: var(--font-gu);">
+                🚀 નવો ટેસ્ટ આપો
+              </button>
+            </div>
+          </div>
+        `;
+        quizResultView.style.display = "block";
+        quizResultView.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      if (btnSubmitExam) btnSubmitExam.style.display = "none";
+      renderQuiz();
+    }
+
+    window.scrollToQuestions = function() {
+      if (quizContainer) {
+        quizContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    window.generateNewTestFromCard = function() {
+      generateCustomQuiz();
+    };
+
+    if (btnSubmitExam) {
+      btnSubmitExam.onclick = () => {
+        const attempted = Object.keys(quizAnswers).length;
+        const total = activeQuizList.length;
+        if (attempted < total) {
+          if (!confirm(`તમે ${total} માંથી માત્ર ${attempted} પ્રશ્નોના જ જવાબ આપ્યા છે. શું તમે ટેસ્ટ સબમિટ કરવા માંગો છો?`)) {
+            return;
+          }
+        }
+        submitExamTest(false);
+      };
+    }
+
+    if (btnGenerateQuiz) {
+      btnGenerateQuiz.onclick = () => {
+        generateCustomQuiz();
+        if (quizContainer) {
+          quizContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+    }
+
+    if (btnResetQuiz) {
+      btnResetQuiz.onclick = () => {
+        if (confirm("શું તમે આ ટેસ્ટ ફરીથી આપવા માંગો છો?")) {
+          quizAnswers = {};
+          if (activeQuizMode === "exam") {
+            isExamSubmitted = false;
+            if (quizResultView) quizResultView.style.display = "none";
+            if (btnSubmitExam) btnSubmitExam.style.display = "inline-block";
+            startExamTimer(Math.max(activeQuizList.length * 60, 180));
+          }
+          renderQuiz();
+        }
+      };
+    }
+
+    builderCountBtns.forEach(btn => {
+      btn.onclick = () => {
+        builderCountBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedQuizCount = btn.dataset.cnt === "all" ? "all" : parseInt(btn.dataset.cnt, 10);
+      };
+    });
+
+    // Initialize Checkboxes & Badges
+    initChapterCheckboxes();
+    updateMyQuestionsUI();
+
+    // ==========================================
+    // ⭐ BOOKMARKS (સેવ કરેલા IMP પ્રશ્નો)
+    // ==========================================
+    function getBookmarks() {
+      try {
+        return JSON.parse(localStorage.getItem("gseb10_bookmarks") || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveBookmarks(arr) {
+      try {
+        localStorage.setItem("gseb10_bookmarks", JSON.stringify(arr));
+        updateBookmarkCount();
+      } catch (e) {}
+    }
+
+    function updateBookmarkCount() {
+      const bms = getBookmarks();
+      const countEl = document.getElementById("bm-count");
+      if (countEl) countEl.textContent = bms.length;
+    }
+
+    window.toggleBookmark = function(chCode, q, a, btnEl) {
+      let bms = getBookmarks();
+      const idx = bms.findIndex(b => b.q === q);
+      if (idx > -1) {
+        bms.splice(idx, 1);
+        if (btnEl) {
+          btnEl.classList.remove("starred");
+          btnEl.textContent = "☆";
+        }
+      } else {
+        bms.push({ chCode, q, a, time: Date.now() });
+        if (btnEl) {
+          btnEl.classList.add("starred");
+          btnEl.textContent = "★";
+        }
+      }
+      saveBookmarks(bms);
+    };
+
+    function renderBookmarks() {
+      const container = document.getElementById("bookmarks-container");
+      if (!container) return;
+
+      const bms = getBookmarks();
+      if (bms.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
+            <div style="font-size: 36px; margin-bottom: 10px;">⭐</div>
+            <div style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px;">કોઈ પ્રશ્ન સેવ કર્યો નથી</div>
+            <div style="font-size: 12px; line-height: 1.5;">પ્રકરણ ખોલીને "🎯 IMP પ્રશ્નો" ટેબમાં આપેલા તારા (☆) પર ક્લિક કરીને મહત્વના પ્રશ્નો અહીં સેવ કરો.</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = bms.map((b, idx) => `
+        <div class="content-card" style="margin-bottom: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="detail-ch-tag" style="margin-bottom: 0;">${b.chCode}</span>
+            <button onclick="removeBookmark(${idx})" style="background: transparent; border: none; color: var(--rose); font-size: 12px; cursor: pointer; font-family: var(--font-gu);">
+              હટાવો ✕
+            </button>
+          </div>
+          <div class="qa-q" style="color: #fff; font-weight: 700; margin-bottom: 6px;">${b.q}</div>
+          <div class="qa-a" style="color: #cbd5e1; font-size: 12.5px; line-height: 1.6;">${b.a}</div>
+        </div>
+      `).join("");
+    }
+
+    window.removeBookmark = function(idx) {
+      const bms = getBookmarks();
+      bms.splice(idx, 1);
+      saveBookmarks(bms);
+      renderBookmarks();
+    };
+
+    const btnClearBookmarks = document.getElementById("btn-clear-bookmarks");
+    if (btnClearBookmarks) {
+      btnClearBookmarks.onclick = () => {
+        if (confirm("શું તમે સેવ કરેલા બધા જ પ્રશ્નો ક્લીયર કરવા માંગો છો?")) {
+          saveBookmarks([]);
+          renderBookmarks();
+        }
+      };
+    }
+
+    // ==========================================
+    // 🎛️ PRIMARY VIEWS CONTROLLER
+    // ==========================================
+    const allViews = {
+      home: document.getElementById("view-home"),
+      map: document.getElementById("view-map"),
+      quiz: document.getElementById("view-quiz"),
+      bookmarks: document.getElementById("view-bookmarks"),
+      blueprint: document.getElementById("view-blueprint"),
+      detail: document.getElementById("view-detail")
+    };
+
+    const navPills = document.querySelectorAll(".nav-pill");
+    const appNavBar = document.getElementById("app-nav-bar");
+
+    function switchMainView(viewKey) {
+      stopAudio();
+
+      navPills.forEach(p => {
+        p.classList.toggle("active", p.dataset.view === viewKey);
+      });
+
+      Object.keys(allViews).forEach(k => {
+        if (allViews[k]) {
+          allViews[k].classList.toggle("active", k === viewKey);
+        }
+      });
+
+      if (viewKey === "detail") {
+        if (appNavBar) appNavBar.style.display = "none";
+        navHomeTitle.style.display = "none";
+        navDetailBar.style.display = "flex";
+      } else {
+        if (appNavBar) appNavBar.style.display = "flex";
+        navHomeTitle.style.display = "flex";
+        navDetailBar.style.display = "none";
+      }
+
+      if (viewKey === "map") renderMapItems();
+      if (viewKey === "quiz") renderQuiz();
+      if (viewKey === "bookmarks") renderBookmarks();
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    navPills.forEach(pill => {
+      pill.onclick = () => {
+        switchMainView(pill.dataset.view);
+      };
+    });
+
+    // Update backToHome to use switchMainView("home")
+    backToHome = function() {
+      stopAudio();
+      switchMainView("home");
+    };
+
+    // Update openChapter to switch to detail view
+    const originalOpenChapter = openChapter;
+    openChapter = function(chId) {
+      originalOpenChapter(chId);
+      if (appNavBar) appNavBar.style.display = "none";
     };
 
     // EVENT LISTENERS
@@ -1831,7 +3965,13 @@
     });
 
     // INITIAL MOUNT
+    updateBookmarkCount();
     renderChapters();
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+    }
     if ('speechSynthesis' in window) {
       window.speechSynthesis.onvoiceschanged = () => {
         // pre-load voices
