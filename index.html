@@ -366,6 +366,25 @@
       50% { box-shadow: 0 0 0 6px rgba(244, 63, 94, 0); }
     }
 
+    .audio-control-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .audio-control-btn:active {
+      background: var(--surface-hover);
+      transform: scale(0.92);
+    }
+
     .live-url-card {
       background: rgba(56, 189, 248, 0.08);
       border: 1px solid rgba(56, 189, 248, 0.3);
@@ -605,13 +624,26 @@
         <h1 class="detail-title" id="det-title"></h1>
         <div class="detail-en" id="det-en"></div>
 
-        <!-- Listen to Chapter Audio Row -->
-        <div class="listen-row">
-          <button id="btn-listen" class="btn-listen" title="આખું પ્રકરણ ઓડિયોમાં સાંભળો">
-            <span id="listen-icon">🔊</span>
-            <span id="listen-text">પ્રકરણ સાંભળો (Listen to Chapter)</span>
-          </button>
-          <span id="listen-status" style="font-size: 11px; color: var(--text-muted); font-family: var(--font-gu);">Web Speech API</span>
+        <!-- Listen to Chapter Audio Row & Controls -->
+        <div class="listen-row" style="flex-direction: column; align-items: stretch; gap: 8px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%;">
+            <button id="btn-listen" class="btn-listen" title="આખું પ્રકરણ ઓડિયોમાં સાંભળો">
+              <span id="listen-icon">▶️</span>
+              <span id="listen-text">પ્રકરણ સાંભળો (Play Audio)</span>
+            </button>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <button id="btn-prev-sentence" class="audio-control-btn" title="પાછલું વાક્ય">⏮️</button>
+              <button id="btn-next-sentence" class="audio-control-btn" title="આગલું વાક્ય">⏭️</button>
+              <button id="btn-stop-audio" class="audio-control-btn" title="ઓડિયો રોકો">⏹️</button>
+            </div>
+          </div>
+          <div id="audio-progress-bar" style="background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-size: 11px; display: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+              <span id="audio-sentence-count" style="color: var(--accent); font-weight: 700;">વાક્ય 1/1</span>
+              <span id="audio-voice-info" style="color: var(--text-muted); font-size: 10.5px;">વૉઇસ સક્રિય</span>
+            </div>
+            <div id="audio-sentence-text" style="color: #cbd5e1; font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: var(--font-gu);"></div>
+          </div>
         </div>
       </div>
 
@@ -1475,29 +1507,142 @@
       panelImp.style.display = secKey === "imp" ? "block" : "none";
     }
 
-    // AUDIO SPEECH SYNTHESIS (WEB SPEECH API)
+    // ROBUST MOBILE-FIRST WEB SPEECH API AUDIO ENGINE
     const btnListen = document.getElementById("btn-listen");
+    const btnPrevSentence = document.getElementById("btn-prev-sentence");
+    const btnNextSentence = document.getElementById("btn-next-sentence");
+    const btnStopAudio = document.getElementById("btn-stop-audio");
     const listenIcon = document.getElementById("listen-icon");
     const listenText = document.getElementById("listen-text");
-    const listenStatus = document.getElementById("listen-status");
+    const audioProgressBar = document.getElementById("audio-progress-bar");
+    const audioSentenceCount = document.getElementById("audio-sentence-count");
+    const audioSentenceText = document.getElementById("audio-sentence-text");
+    const audioVoiceInfo = document.getElementById("audio-voice-info");
+
     let isSpeaking = false;
+    let audioPlaylist = [];
+    let currentSentenceIdx = 0;
+    let keepAliveInterval = null;
+
+    function getBestTTSVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return null;
+
+      // 1. Check for Gujarati voice
+      let match = voices.find(v => (v.lang && (v.lang === "gu-IN" || v.lang.startsWith("gu"))) || (v.name && v.name.toLowerCase().includes("gujarati")));
+      if (match) return { voice: match, lang: match.lang || "gu-IN", label: "ગુજરાતી વૉઇસ" };
+
+      // 2. Check for Hindi voice (available on 99% of Android & iOS devices in India)
+      match = voices.find(v => (v.lang && (v.lang === "hi-IN" || v.lang.startsWith("hi"))) || (v.name && v.name.toLowerCase().includes("hindi")));
+      if (match) return { voice: match, lang: match.lang || "hi-IN", label: "હિન્દી / પ્રાદેશિક વૉઇસ" };
+
+      // 3. Indian English
+      match = voices.find(v => v.lang && v.lang === "en-IN");
+      if (match) return { voice: match, lang: match.lang, label: "ભારતીય અવાજ" };
+
+      // 4. Default device voice
+      const defaultVoice = voices.find(v => v.default) || voices[0];
+      return { voice: defaultVoice, lang: defaultVoice.lang || "gu-IN", label: "સિસ્ટમ વૉઇસ" };
+    }
+
+    function buildChapterPlaylist(ch) {
+      const list = [];
+      list.push(`પ્રકરણ ${ch.num}. ${ch.titleGu}.`);
+      list.push("મુખ્ય આધારભૂત મુદ્દાઓ.");
+      ch.points.forEach(pt => {
+        // Break long points into shorter phrases if needed
+        const cleanPt = pt.replace(/[•]/g, "").trim();
+        list.push(cleanPt);
+      });
+      list.push("મહત્વની સાલવારી અને તારીખો.");
+      ch.dates.forEach(d => {
+        list.push(`${d.tag}: ${d.text}`);
+      });
+      return list;
+    }
 
     function stopAudio() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
       isSpeaking = false;
+      if (keepAliveInterval) {
+        clearInterval(keepAliveInterval);
+        keepAliveInterval = null;
+      }
       if (btnListen) {
         btnListen.classList.remove("speaking");
-        listenIcon.textContent = "🔊";
-        listenText.textContent = "પ્રકરણ સાંભળો (Listen to Chapter)";
-        listenStatus.textContent = "Web Speech API";
+        listenIcon.textContent = "▶️";
+        listenText.textContent = "પ્રકરણ સાંભળો (Play Audio)";
       }
+      if (audioProgressBar) {
+        audioProgressBar.style.display = "none";
+      }
+    }
+
+    function playSentenceAt(index) {
+      if (!isSpeaking || !audioPlaylist || index >= audioPlaylist.length) {
+        stopAudio();
+        return;
+      }
+
+      currentSentenceIdx = index;
+      const textToSpeak = audioPlaylist[index];
+
+      // Update UI progress
+      if (audioProgressBar) {
+        audioProgressBar.style.display = "block";
+        audioSentenceCount.textContent = `વાક્ય ${index + 1} / ${audioPlaylist.length}`;
+        audioSentenceText.textContent = textToSpeak;
+      }
+
+      const voiceData = getBestTTSVoice();
+      if (audioVoiceInfo && voiceData) {
+        audioVoiceInfo.textContent = voiceData.label;
+      }
+
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.resume();
+
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      if (voiceData) {
+        if (voiceData.voice) utterance.voice = voiceData.voice;
+        utterance.lang = voiceData.lang;
+      } else {
+        utterance.lang = "gu-IN";
+      }
+
+      utterance.rate = 0.92;
+      utterance.pitch = 1.0;
+
+      utterance.onend = () => {
+        if (isSpeaking) {
+          if (currentSentenceIdx + 1 < audioPlaylist.length) {
+            playSentenceAt(currentSentenceIdx + 1);
+          } else {
+            stopAudio();
+          }
+        }
+      };
+
+      utterance.onerror = (e) => {
+        console.warn("TTS sentence error, skipping:", e);
+        if (isSpeaking) {
+          if (currentSentenceIdx + 1 < audioPlaylist.length) {
+            playSentenceAt(currentSentenceIdx + 1);
+          } else {
+            stopAudio();
+          }
+        }
+      };
+
+      window.speechSynthesis.speak(utterance);
     }
 
     function toggleAudio() {
       if (!('speechSynthesis' in window)) {
-        alert("તમારા બ્રાઉઝરમાં Web Speech API ઓડિયો ઉપલબ્ધ નથી.");
+        alert("આ બ્રાઉઝરમાં Web Speech API ઓડિયો સુવિધા સપોર્ટ કરતી નથી. કૃપા કરીને Google Chrome અથવા Safari માં પ્રયાસ કરો.");
         return;
       }
 
@@ -1508,53 +1653,49 @@
 
       if (!activeChapter) return;
 
-      window.speechSynthesis.cancel();
+      // Start new audio session
+      isSpeaking = true;
+      audioPlaylist = buildChapterPlaylist(activeChapter);
+      currentSentenceIdx = 0;
 
-      // Prepare text to read aloud in Gujarati
-      const speechParts = [];
-      speechParts.push(`પ્રકરણ ${activeChapter.num}. ${activeChapter.titleGu}.`);
-      speechParts.push("મુખ્ય આધારભૂત મુદ્દાઓ.");
-      activeChapter.points.forEach(pt => speechParts.push(pt));
-      speechParts.push("મહત્વની સાલવારી.");
-      activeChapter.dates.forEach(d => speechParts.push(`${d.tag}. ${d.text}`));
+      btnListen.classList.add("speaking");
+      listenIcon.textContent = "⏸️";
+      listenText.textContent = "ઓડિયો પોઝ (Pause Audio)";
 
-      const fullText = speechParts.join(". ");
+      // Android Chrome keep-alive bugfix
+      if (keepAliveInterval) clearInterval(keepAliveInterval);
+      keepAliveInterval = setInterval(() => {
+        if (isSpeaking && 'speechSynthesis' in window && window.speechSynthesis.speaking) {
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        }
+      }, 10000);
 
-      const utterance = new SpeechSynthesisUtterance(fullText);
-      utterance.lang = "gu-IN";
-      utterance.rate = 0.92;
-
-      // Try finding Gujarati or Hindi/Indian voice
-      const voices = window.speechSynthesis.getVoices();
-      const guVoice = voices.find(v => v.lang.startsWith("gu") || v.lang.includes("Gujarati"));
-      const hiVoice = voices.find(v => v.lang.startsWith("hi") || v.lang.includes("Hindi"));
-      if (guVoice) {
-        utterance.voice = guVoice;
-      } else if (hiVoice) {
-        utterance.voice = hiVoice;
-      }
-
-      utterance.onstart = () => {
-        isSpeaking = true;
-        btnListen.classList.add("speaking");
-        listenIcon.textContent = "⏹️";
-        listenText.textContent = "ઓડિયો રોકો (Stop Audio)";
-        listenStatus.textContent = "ગુજરાતી વાંચન ચાલુ છે...";
-      };
-
-      utterance.onend = () => {
-        stopAudio();
-      };
-
-      utterance.onerror = () => {
-        stopAudio();
-      };
-
-      window.speechSynthesis.speak(utterance);
+      playSentenceAt(0);
     }
 
     if (btnListen) {
       btnListen.onclick = toggleAudio;
+    }
+
+    if (btnStopAudio) {
+      btnStopAudio.onclick = stopAudio;
+    }
+
+    if (btnPrevSentence) {
+      btnPrevSentence.onclick = () => {
+        if (isSpeaking && currentSentenceIdx > 0) {
+          playSentenceAt(currentSentenceIdx - 1);
+        }
+      };
+    }
+
+    if (btnNextSentence) {
+      btnNextSentence.onclick = () => {
+        if (isSpeaking && currentSentenceIdx + 1 < audioPlaylist.length) {
+          playSentenceAt(currentSentenceIdx + 1);
+        }
+      };
     }
 
     // Stop audio when navigating away
