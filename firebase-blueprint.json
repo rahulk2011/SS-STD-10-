@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role-based access and tenant isolation",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "enum": ["student", "parent", "teacher", "principal"] },
+        "schoolId": { "type": "string", "maxLength": 64 },
+        "photoURL": { "type": "string", "maxLength": 512 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email", "role", "schoolId"]
+    },
+    "StudyNote": {
+      "title": "StudyNote",
+      "description": "Transcribed handwritten study chapter and notes in Gujarati and English",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "chapterNumber": { "type": "string", "maxLength": 16 },
+        "title": { "type": "string", "maxLength": 256 },
+        "titleEn": { "type": "string", "maxLength": 256 },
+        "category": { "type": "string", "maxLength": 64 },
+        "pages": { "type": "string", "maxLength": 32 },
+        "summary": { "type": "string", "maxLength": 1000 },
+        "fullTextGujarati": { "type": "string", "maxLength": 20000 },
+        "fullTextEnglish": { "type": "string", "maxLength": 20000 },
+        "schoolId": { "type": "string", "maxLength": 64 },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "chapterNumber", "title", "schoolId"]
+    },
+    "StudyProgress": {
+      "title": "StudyProgress",
+      "description": "Student revision and chapter study progress tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "schoolId": { "type": "string", "maxLength": 64 },
+        "chapterId": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "enum": ["not_started", "in_progress", "completed", "revision_needed"] },
+        "timeSpentMinutes": { "type": "string", "maxLength": 16 },
+        "quizScore": { "type": "string", "maxLength": 16 },
+        "personalNotes": { "type": "string", "maxLength": 2000 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "schoolId", "chapterId", "status"]
+    },
+    "Bookmark": {
+      "title": "Bookmark",
+      "description": "User bookmarked notes and exam revision snippets",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "schoolId": { "type": "string", "maxLength": 64 },
+        "chapterId": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 256 },
+        "snippet": { "type": "string", "maxLength": 512 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "schoolId", "chapterId", "title"]
+    },
+    "School": {
+      "title": "School",
+      "description": "School tenant definition for B2B multi-tenancy",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 256 },
+        "code": { "type": "string", "maxLength": 32 },
+        "city": { "type": "string", "maxLength": 128 },
+        "state": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name", "code"]
+    }
+  },
+  "firestore": {
+    "/schools/{schoolId}": {
+      "schema": { "$ref": "#/entities/School" },
+      "description": "Tenant schools metadata"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles with role and school isolation"
+    },
+    "/study_notes/{noteId}": {
+      "schema": { "$ref": "#/entities/StudyNote" },
+      "description": "Transcribed notes repository"
+    },
+    "/study_progress/{progressId}": {
+      "schema": { "$ref": "#/entities/StudyProgress" },
+      "description": "Student study progress and tracking logs"
+    },
+    "/bookmarks/{bookmarkId}": {
+      "schema": { "$ref": "#/entities/Bookmark" },
+      "description": "User saved bookmarks and highlights"
+    }
+  }
+}
