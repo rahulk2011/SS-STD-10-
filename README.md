@@ -10,10 +10,11 @@
 
 ## 🌐 Live Website Access (Open on Any Device)
 
-You can open and use this application directly on any smartphone (Android / iPhone), tablet, iPad, laptop, or desktop computer via this live web link:
+You can open and view this application right now on any phone, tablet, laptop, or desktop using the active live link:
 
-🔗 **Public Live Web URL:**  
-👉 **[https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app](https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app)**
+👉 **[https://ais-dev-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app](https://ais-dev-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app)**
+
+*(Note: In Google AI Studio, click the **"Share"** button in the top right to enable the permanent public shared link: `https://ais-pre-fhwxne7et6uiohof5gbucy-459969950201.asia-southeast1.run.app`)*
 
 > 💡 **Mobile Tip:** Open the link on Google Chrome (Android) or Safari (iOS) and tap **"Add to Home Screen"** to use it just like a native mobile app!
 
