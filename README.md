@@ -22,11 +22,13 @@ Open this live link on any smartphone (Android / iPhone), tablet, iPad, laptop, 
 
 - **100% Student Focused (Zero Fluff):** Purely dedicated to board exam preparation with zero admin or school clutter.
 - **117+ Pages of Handwritten Notes Digitized:** Meticulously transcribed and organized into 19 high-yield chapters in Gujarati with English terminology references.
-- **4-in-1 Quick Revision Sections for Every Chapter:**
+- **5-in-1 Quick Revision Sections for Every Chapter:**
   1. 📌 **મુખ્ય મુદ્દાઓ અને સંકલ્પનાઓ (Core Concepts):** Point-by-point conceptual breakdown.
-  2. 📅 **મહત્વની સાલવારી અને તારીખો (Timeline & Dates):** Chronological badges highlighting key years, acts, and events.
-  3. 📖 **વ્યાખ્યાઓ / શબ્દાવલિ (Definitions):** Accurate board definitions (e.g., સંસ્કૃતિ, કાળો પેગોડા, રેગુર, પ્રચ્છન્ન બેરોજગારી, RTI, COPRA).
-  4. 🎯 **બોર્ડ પરીક્ષા મોસ્ટ IMP પ્રશ્નોત્તરી (2, 3 અને 4 ગુણ):** High-scoring model answers and structured points.
+  2. 🧠 **માઇન્ડ મેપ & મેમરી હેક્સ (Visual Mind Maps & Mnemonics):** Interactive visual concept tree with board exam memory formulas (દા.ત. વાવના પ્રકારો માટે 'ન-ભ-જ-વિ', કોલસા માટે 'A-B-L-P', કલમ 51(ક) માટે 'છ-જ-ટ').
+  3. 📅 **મહત્વની સાલવારી અને તારીખો (Timeline & Dates):** Chronological badges highlighting key years, acts, and events.
+  4. 📖 **વ્યાખ્યાઓ / શબ્દાવલિ (Definitions):** Accurate board definitions (e.g., સંસ્કૃતિ, કાળો પેગોડા, રેગુર, પ્રચ્છન્ન બેરોજગારી, RTI, COPRA).
+  5. 🎯 **બોર્ડ પરીક્ષા મોસ્ટ IMP પ્રશ્નોત્તરી (2, 3 અને 4 ગુણ):** High-scoring model answers and structured points.
+- **1-Click Audio Reader:** Streamlined high-yield summary voice reader directly via browser Web Speech API.
 - **Real-Time Instant Search:** Filter any chapter, concept, year, or term in real time as you type (e.g., `મોહેં-જો-દડો`, `NH-44`, `કલમ 51`).
 - **Subject Category Filters:** Instant switching between:
   - 🏛️ **ઇતિહાસ (History)**: Chapters 1, 2, 3, 4, 5, 6

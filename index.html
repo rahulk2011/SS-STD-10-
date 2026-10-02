@@ -330,15 +330,15 @@
       justify-content: space-between;
       gap: 10px;
       margin-top: 12px;
-      padding-top: 12px;
+      padding-top: 10px;
       border-top: 1px solid var(--border);
     }
 
     .btn-listen {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(129, 140, 248, 0.15) 100%);
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(129, 140, 248, 0.12) 100%);
       border: 1px solid var(--accent);
       color: #fff;
       padding: 7px 14px;
@@ -348,93 +348,137 @@
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
+      width: 100%;
+      justify-content: center;
     }
 
     .btn-listen:active {
-      transform: scale(0.96);
+      transform: scale(0.97);
     }
 
     .btn-listen.speaking {
-      background: linear-gradient(135deg, rgba(244, 63, 94, 0.2) 0%, rgba(251, 113, 133, 0.2) 100%);
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.25) 0%, rgba(251, 113, 133, 0.25) 100%);
       border-color: var(--rose);
       color: var(--rose);
-      animation: pulseGlow 1.5s infinite;
+      animation: pulseGlow 1.4s infinite;
     }
 
     @keyframes pulseGlow {
       0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
-      50% { box-shadow: 0 0 0 6px rgba(244, 63, 94, 0); }
+      50% { box-shadow: 0 0 0 5px rgba(244, 63, 94, 0); }
     }
 
-    .audio-control-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 13px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .audio-control-btn:active {
-      background: var(--surface-hover);
-      transform: scale(0.92);
-    }
-
-    .live-url-card {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 11.5px;
-    }
-
-    .live-url-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      word-break: break-all;
-    }
-
-    .live-url-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Section Navigation Accordions / Tabs */
+    /* Section Navigation Tabs (5 Tabs with smooth scroll) */
     .sec-tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      scrollbar-width: none;
       margin-bottom: 16px;
       background: #0f172a;
       padding: 4px;
       border-radius: 12px;
       border: 1px solid var(--border);
     }
+    .sec-tabs::-webkit-scrollbar { display: none; }
+
     .sec-tab {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 11px;
+      font-size: 11.5px;
       font-family: var(--font-gu);
       font-weight: 700;
-      padding: 8px 4px;
+      padding: 7px 10px;
       border-radius: 8px;
       cursor: pointer;
+      white-space: nowrap;
+      flex: 1;
       text-align: center;
       transition: all 0.2s;
+    }
+
+    /* Mind Map Styling */
+    .mindmap-container {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .mm-root {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      border: 1px solid #6366f1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 800;
+      color: #fff;
+      font-size: 13.5px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+    }
+
+    .mm-branch {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+
+    .mm-branch-title {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mm-nodes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .mm-node {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+
+    .mm-trick-box {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px dashed rgba(251, 191, 36, 0.5);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-top: 12px;
+    }
+
+    .mm-trick-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mm-trick-content {
+      font-size: 11.5px;
+      color: #fef08a;
+      line-height: 1.5;
     }
     .sec-tab.active {
       background: var(--surface);
@@ -584,19 +628,6 @@
         <input type="text" id="search-input" class="search-input" placeholder="પ્રકરણ, સાલવારી કે વિષય શોધો (દા.ત. મોહેં-જો-દડો, કલમ 51)...">
       </div>
 
-      <!-- Official Live Website Banner -->
-      <div class="live-url-card">
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-          <span style="font-weight: 700; color: #fff;">🌐 સત્તાવાર લાઈવ વેબસાઇટ:</span>
-          <a href="https://rahulk2011.github.io/SS-STD-10-/" target="_blank" rel="noopener noreferrer" class="live-url-link">
-            rahulk2011.github.io/SS-STD-10-/ ↗
-          </a>
-        </div>
-        <button onclick="navigator.clipboard.writeText('https://rahulk2011.github.io/SS-STD-10-/'); this.textContent='કૉપિ થઈ!'; setTimeout(()=>this.textContent='કૉપિ લિંક', 1500);" style="background: var(--surface); border: 1px solid var(--border); color: #fff; font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; font-family: var(--font-gu);">
-          કૉપિ લિંક
-        </button>
-      </div>
-
       <!-- Category Filter Tabs -->
       <div class="cat-tabs">
         <button class="cat-tab active" data-cat="all">બધા પ્રકરણો (19)</button>
@@ -604,12 +635,6 @@
         <button class="cat-tab" data-cat="ભૂગોળ">ભૂગોળ (Ch 8-14)</button>
         <button class="cat-tab" data-cat="અર્થશાસ્ત્ર">અર્થશાસ્ત્ર (Ch 15-19)</button>
         <button class="cat-tab" data-cat="નાગરિક">નાગરિક/બંધારણ (Ch 20-21)</button>
-      </div>
-
-      <!-- Quick Highlights Hero -->
-      <div class="hero-banner">
-        <div class="hero-title">📖 બોર્ડ પરીક્ષા ક્વિક રિવિઝન માસ્ટર</div>
-        <div class="hero-desc">117 પાનાની હસ્તલિખિત નોંધોમાંથી તારવેલાં મુખ્ય મુદ્દાઓ, સાલવારી, મહત્વના નિયમો અને 100% મોસ્ટ IMP પ્રશ્નોત્તરી.</div>
       </div>
 
       <!-- Chapters List Grid -->
@@ -624,32 +649,19 @@
         <h1 class="detail-title" id="det-title"></h1>
         <div class="detail-en" id="det-en"></div>
 
-        <!-- Listen to Chapter Audio Row & Controls -->
-        <div class="listen-row" style="flex-direction: column; align-items: stretch; gap: 8px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%;">
-            <button id="btn-listen" class="btn-listen" title="આખું પ્રકરણ ઓડિયોમાં સાંભળો">
-              <span id="listen-icon">▶️</span>
-              <span id="listen-text">પ્રકરણ સાંભળો (Play Audio)</span>
-            </button>
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <button id="btn-prev-sentence" class="audio-control-btn" title="પાછલું વાક્ય">⏮️</button>
-              <button id="btn-next-sentence" class="audio-control-btn" title="આગલું વાક્ય">⏭️</button>
-              <button id="btn-stop-audio" class="audio-control-btn" title="ઓડિયો રોકો">⏹️</button>
-            </div>
-          </div>
-          <div id="audio-progress-bar" style="background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-size: 11px; display: none;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
-              <span id="audio-sentence-count" style="color: var(--accent); font-weight: 700;">વાક્ય 1/1</span>
-              <span id="audio-voice-info" style="color: var(--text-muted); font-size: 10.5px;">વૉઇસ સક્રિય</span>
-            </div>
-            <div id="audio-sentence-text" style="color: #cbd5e1; font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: var(--font-gu);"></div>
-          </div>
+        <!-- 1-Click Clean Audio Player -->
+        <div class="listen-row">
+          <button id="btn-listen" class="btn-listen" title="આખા પ્રકરણનો ઓડિયો સારાંશ સાંભળો">
+            <span id="listen-icon">🔊</span>
+            <span id="listen-text">પ્રકરણ સારાંશ સાંભળો (Listen Summary)</span>
+          </button>
         </div>
       </div>
 
-      <!-- Section Tabs -->
+      <!-- 5 Quick Section Tabs -->
       <div class="sec-tabs">
         <button class="sec-tab active" data-sec="points">📌 મુદ્દાઓ</button>
+        <button class="sec-tab" data-sec="mindmap">🧠 માઇન્ડ મેપ</button>
         <button class="sec-tab" data-sec="dates">📅 સાલવારી</button>
         <button class="sec-tab" data-sec="terms">📖 વ્યાખ્યાઓ</button>
         <button class="sec-tab" data-sec="imp">🎯 IMP પ્રશ્નો</button>
@@ -657,6 +669,7 @@
 
       <!-- Content Panels -->
       <div id="panel-points" class="sec-panel"></div>
+      <div id="panel-mindmap" class="sec-panel" style="display: none;"></div>
       <div id="panel-dates" class="sec-panel" style="display: none;"></div>
       <div id="panel-terms" class="sec-panel" style="display: none;"></div>
       <div id="panel-imp" class="sec-panel" style="display: none;"></div>
@@ -1336,6 +1349,7 @@
     const detEn = document.getElementById("det-en");
     const secTabs = document.querySelectorAll(".sec-tab");
     const panelPoints = document.getElementById("panel-points");
+    const panelMindmap = document.getElementById("panel-mindmap");
     const panelDates = document.getElementById("panel-dates");
     const panelTerms = document.getElementById("panel-terms");
     const panelImp = document.getElementById("panel-imp");
@@ -1438,6 +1452,185 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    // 19-CHAPTER COMPREHENSIVE MIND MAP & MEMORY HACK DATASET
+    const MINDMAP_DATA = {
+      "ch-01": {
+        root: "ભારતનો સમૃદ્ધ વારસો (Ch 1)",
+        branches: [
+          { title: "🌿 પ્રાકૃતિક વારસો (કુદરતી ભેટ)", nodes: ["ભૂમિદ્રશ્યો (હિમાલય)", "નદીઓ (લોકમાતા - સિંધુ, રાવી, ગંગા)", "વનસ્પતિ (વડ, પીપળો, તુલસી)", "વન્યજીવો (ચાર સિંહ રાષ્ટ્રમુદ્રા)"] },
+          { title: "🏛️ સાંસ્કૃતિક વારસો (માનવસર્જિત)", nodes: ["શિલ્પ-સ્થાપત્ય", "મેળાઓ (તરણેતર, વૌઠા, ભવનાથ)", "ઉત્સવો (મોઢેરા ઉત્તરાર્ધ)", "ઐતિહાસિક સ્થળો (લોથલ, વડનગર)"] },
+          { title: "👥 પ્રાચીન પ્રજાઓ", nodes: ["નેગ્રીટો (હબસી)", "ઑસ્ટ્રેલોઇડ (નિષાદ)", "દ્રવિડ (શિવ-પાર્વતી પૂજા)", "આર્ય (નોર્ડિક)"] },
+          { title: "📜 બંધારણીય જોગવાઈ", nodes: ["કલમ 51(ક) - મૂળભૂત ફરજો", "(છ) વારસાનું જતન", "(જ) પર્યાવરણ સંરક્ષણ", "(ટ) હિંસા ત્યાગ / જાહેર મિલકત"] }
+        ],
+        trick: "💡 યાદ રાખવાની ગોલ્ડન ટ્રીક: 'છ - જ - ટ' (છ = સમન્વિત સંસ્કૃતિ વારસો, જ = જંગલ-જીવ પર્યાવરણ, ટ = તોડફોડ વગર જાહેર મિલકત રક્ષણ)"
+      },
+      "ch-02": {
+        root: "હસ્ત અને લલિતકલા પરંપરા (Ch 2)",
+        branches: [
+          { title: "🏺 હસ્તકલાઓ", nodes: ["માટીકામ (કુંભારનો ચાકડો પ્રથમ યંત્ર)", "વણાટકામ (પાટણના પટોળા - બેવડ ઇક્ત)", "ધાતુકામ & અકીક (સુરત, રાણપુર)", "ચર્મ ઉદ્યોગ & જરીકામ"] },
+          { title: "🎵 સંગીત કલા", nodes: ["7 સ્વરો (સા રે ગ મ પ ધ ની)", "5 શિવમુખ રાગો", "સંગીત મકરંદ (નારદ)", "સંગીત રત્નાકર (સારંગદેવ)", "સંગીત પારિજાત (અહોબલ)"] },
+          { title: "💃 શાસ્ત્રીય નૃત્યો", nodes: ["ભરતનાટ્યમ (તાંજોર, તમિલનાડુ)", "કુચીપુડી (આંધ્રપ્રદેશ)", "કથકલી (કેરળ - મુખવટો)", "કથક (ઉત્તરપ્રદેશ)", "મણિપુરી (કુમિન ઘેરદાર ચણિયો)"] },
+          { title: "🎭 લોકનાટ્ય & નૃત્ય", nodes: ["ભવાઈ (અસાંઈત ઠાકર - 700 વર્ષ)", "ગરબો (ગર્ભદીપ)", "રાસ & આદિવાસી નૃત્યો"] }
+        ],
+        trick: "💡 5 મુખ્ય રાગોની ટ્રીક: 'શ્રી - દી - મે - હિ - ભૈ' (શ્રી, દીપક, મેઘ, હિંડોળ, ભૈરવી - શિવમુખમાંથી ઉત્પન્ન)"
+      },
+      "ch-03": {
+        root: "શિલ્પ અને સ્થાપત્ય કલા (Ch 3)",
+        branches: [
+          { title: "🏛️ સિંધુ ખીણ સભ્યતા", nodes: ["હડપ્પા (દયારામ સહાની 1921)", "મોહેં-જો-દડો (ગટર યોજના, સ્નાનાગાર)", "ધોળાવીરા (રેઇન વૉટર હાર્વેસ્ટિંગ)", "લોથલ (પ્રાચીન ડૉકયાર્ડ બંદર)"] },
+          { title: "☸️ મૌર્યકાલીન સ્થાપત્ય", nodes: ["સ્તૂપના અંગો (હર્મિકા, મેધિ, પ્રદક્ષિણા, તોરણ)", "સાંચી સ્તૂપ (મધ્યપ્રદેશ)", "સારનાથ સિંહસ્તંભ (24 આરા ચક્ર)"] },
+          { title: "🛕 મંદિર & સ્થાપત્ય", nodes: ["મોઢેરા સૂર્યમંદિર (1026 ભીમદેવ-1)", "વાવના 4 પ્રકાર (નંદા, ભદ્રા, જયા, વિજયા)"] }
+        ],
+        trick: "💡 વાવ યાદ રાખવાની ટ્રીક: 'ન - ભ - જ - વિ' (નંદા = 1 દ્વાર/3 માળ, ભદ્રા = 2 દ્વાર/6 માળ, જયા = 3 દ્વાર/9 માળ, વિજયા = 4 દ્વાર/12 માળ)"
+      },
+      "ch-04": {
+        root: "ભારતનો સાહિત્યિક વારસો (Ch 4)",
+        branches: [
+          { title: "📜 પ્રાચીન વૈદિક ગ્રંથો", nodes: ["ઋગ્વેદ (1028 સૂક્તો, 10 મંડળ)", "સામવેદ (સંગીત ગંગોત્રી)", "યજુર્વેદ (યજ્ઞો)", "અથર્વવેદ (કર્મકાંડ)", "108 ઉપનિષદો", "પાણિની (અષ્ટાધ્યાયી)"] },
+          { title: "📖 મહાકાવ્યો & સાહિત્ય", nodes: ["રામાયણ (વાલ્મીકિ)", "મહાભારત (1 લાખ શ્લોક - વેદવ્યાસ)", "કાલિદાસ (મેઘદૂત, શાકુન્તલમ્)", "રાજતરંગિણી (કલ્હણ)"] },
+          { title: "🎓 પ્રાચીન વિદ્યાપીઠો", nodes: ["નાલંદા (બિહાર - ધર્મગંજ)", "તક્ષશિલા (ગાંધાર)", "વારાણસી (કાશી)", "વલ્લભી (ભાવનગર - મૈત્રક વંશ)"] }
+        ],
+        trick: "💡 વેદોની ટ્રીક: 'ઋગ-સામ-યજુ-અથ' (ઋગ્વેદ = પ્રાચીનતમ, સામવેદ = સંગીતની ગંગોત્રી)"
+      },
+      "ch-05": {
+        root: "વિજ્ઞાન અને ટેકનોલોજીનો વારસો (Ch 5)",
+        branches: [
+          { title: "⚔️ ધાતુ & રસાયણશાસ્ત્ર", nodes: ["દિલ્હી લોહસ્તંભ (કાટ લાગતો નથી)", "આચાર્ય નાગાર્જુન (રસ રત્નાકર, પારાની ભસ્મ)"] },
+          { title: "🩺 વૈદક & શલ્યચિકિત્સા", nodes: ["મહર્ષિ ચરક (ચરકસંહિતા 2000 ઔષધિ)", "મહર્ષિ સુશ્રુત (વાઢકાપ & પ્લાસ્ટિક સર્જરી)", "વાગ્ભટ્ટ (અષ્ટાંગહૃદય)"] },
+          { title: "🔢 ગણિત & ખગોળ", nodes: ["આર્યભટ્ટ (શૂન્યની શોધ, π = 3.1416)", "ભાસ્કરાચાર્ય (લીલાવતી ગણિત)", "બ્રહ્મગુપ્ત (ગુરુત્વાકર્ષણ)"] }
+        ],
+        trick: "💡 આર્યભટ્ટ ટ્રીક: 'શૂન્ય + પાય (π) + પૃથ્વી પરિભ્રમણ = આર્યભટ્ટ'"
+      },
+      "ch-06": {
+        root: "સાંસ્કૃતિક વારસાનાં સ્થળો (Ch 6)",
+        branches: [
+          { title: "⛰️ ગુફા સ્થાપત્ય", nodes: ["અજંતા (29 ગુફા - પદ્મપાણિ)", "ઈલોરા (34 ગુફા - કૈલાસ મંદિર)", "એલિફન્ટા (ત્રિમૂર્તિ શિલ્પ)"] },
+          { title: "🛕 ઐતિહાસિક મંદિરો", nodes: ["કોણાર્ક સૂર્યમંદિર (કાળા પેગોડા - 12 પૈડાં)", "બૃહદેશ્વર (તાંજોર - રાજરાજ ચોલ)"] },
+          { title: "🏰 મુઘલ & ગુજરાત વારસો", nodes: ["તાજમહેલ (1631-1653 શાહજહાં)", "ચાંપાનેર (UNESCO 2004)", "રાણકી વાવ (પાટણ - UNESCO 2014)"] }
+        ],
+        trick: "💡 કોણાર્ક ટ્રીક: '7 અશ્વો, 12 ચક્રો (12 મહિના), 8 આરા (8 પ્રહર) = કાળા પેગોડા'"
+      },
+      "ch-08": {
+        root: "કુદરતી સંસાધનો (Ch 8)",
+        branches: [
+          { title: "🌱 જમીનના 8 પ્રકારો (ICAR)", nodes: ["કાંપની જમીન (43%)", "રાતી જમીન (19% ફેરિક ઓક્સાઈડ)", "કાળી રેગુર (15% કપાસ)", "પડખાઉ લેટેરાઇટ", "રણ, પર્વતીય, જંગલ, દલદલ"] },
+          { title: "🛡️ જમીન સંરક્ષણ", nodes: ["સીડીદાર ખેતી", "ક્ષિતિજ સમાંતર ખેડ", "વનીકરણ", "ઢોર ચરાણ નિયંત્રણ"] },
+          { title: "🐅 વન્યજીવ સંરક્ષણ યોજનાઓ", nodes: ["વાઘ (1973)", "હાથી (1992)", "ગેંડા (1987)", "ગીધ (2004)", "હિમદીપડા (2000)"] }
+        ],
+        trick: "💡 સાલવારી ટ્રીક: 'વાઘ 73 • હાથી 92 • ગીધ 04'"
+      },
+      "ch-10": {
+        root: "ભારત: કૃષિ અર્થતંત્ર (Ch 10)",
+        branches: [
+          { title: "🚜 ખેતીના 6 પ્રકાર", nodes: ["જીવનનિર્વાહ", "સૂકી ખેતી", "આર્દ્ર ખેતી", "ઝૂમ ખેતી", "બાગાયતી", "સઘન (વ્યાપારી)"] },
+          { title: "🌾 મુખ્ય ખોરાકી પાકો", nodes: ["ડાંગર (25% વાવેતર - ભારત 2જો)", "ઘઉં (અનાજનો રાજા - ભાલિયા ઘઉં)", "બાજરી (બનાસકાંઠા)"] },
+          { title: "💰 રોકડિયા પાકો", nodes: ["મગફળી (ગુજરાત 1લું - જૂનાગઢ)", "એરંડા (વિશ્વમાં 64% ભારત)", "કપાસ (કાનમ - સફેદ સોનું)", "તમાકુ (ચરોતર સોનેરી પાન)"] }
+        ],
+        trick: "💡 પ્રદેશ યાદ રાખવાની ટ્રીક: 'કાનમ = કપાસ, ચરોતર = તમાકુ, ભાલ = ઘઉં'"
+      },
+      "ch-11": {
+        root: "જળ સંસાધન & બહુહેતુક યોજનાઓ (Ch 11)",
+        branches: [
+          { title: "💧 જળ સ્ત્રોતો & વપરાશ", nodes: ["વૃષ્ટિય જળ", "પૃષ્ઠીય જળ", "ભૂમિગત જળ (ઉત્તરમાં 42%)", "84% જળ સિંચાઈમાં વપરાય"] },
+          { title: "🌊 મુખ્ય બંધ યોજનાઓ", nodes: ["ભાખરા-નાંગલ (સતલુજ)", "હીરાકુડ (મહાનદી)", "સરદાર સરોવર (નર્મદા)", "ઉકાઈ/કાકરાપાર (તાપી)"] },
+          { title: "🚰 જળ વ્યવસ્થાપન", nodes: ["ખેતતલાવડી & ચેકડેમ", "ટપક-ફુવારા પદ્ધતિ", "રેઇન વોટર હાર્વેસ્ટિંગ"] }
+        ],
+        trick: "💡 સિંચાઈ ટ્રીક: 'પંજાબ 90.8% મોખરે, મિઝોરમ 7.3% સૌથી ઓછું'"
+      },
+      "ch-12": {
+        root: "ખનીજ અને શક્તિ સંસાધનો (Ch 12)",
+        branches: [
+          { title: "⛏️ ધાતુમય ખનીજો", nodes: ["લોખંડ (કર્ણાટક મોખરે)", "તાંબુ (પ્રથમ ધાતુ)", "તાંબુ+કલાઈ = કાંસું", "તાંબુ+જસત = પિત્તળ", "બોક્સાઈટ (એલ્યુમિનિયમ)"] },
+          { title: "⚡ શક્તિ સંસાધનો", nodes: ["કોલસો (એન્થ્રેસાઈટ, બિટ્યુમિનસ, લિગ્નાઈટ, પીટ)", "ખનિજતેલ (1958 લુણેજ)", "રિલાયન્સ જામનગર રિફાઇનરી"] },
+          { title: "☀️ બિનપરંપરાગત ઊર્જા", nodes: ["સૌર ઊર્જા (ચારણકા પાટણ)", "પવન ઊર્જા (લાંબા, માંડવી)", "ગરમ પાણીના ઝરા (ઉનાઈ, તુલસીશ્યામ)"] }
+        ],
+        trick: "💡 કોલસાની શ્રેષ્ઠતા ટ્રીક: 'A - B - L - P' (એન્થ્રેસાઈટ > બિટ્યુમિનસ > લિગ્નાઈટ > પીટ)"
+      },
+      "ch-13": {
+        root: "ઉત્પાદન ઉદ્યોગો (Ch 13)",
+        branches: [
+          { title: "🧵 કાપડ ઉદ્યોગ", nodes: ["સુતરાઉ કાપડ (3.5 કરોડ રોજગારી)", "મુંબઈ (કોટનપોલિસ)", "અમદાવાદ (પૂર્વનું માન્ચેસ્ટર)", "શણ (પશ્ચિમ બંગાળ 80%)"] },
+          { title: "🏭 ભારે ઉદ્યોગો", nodes: ["TISCO (1907 જમશેદપુર)", "SAIL (1954)", "સિમેન્ટ (ભારત વિશ્વમાં 2જો)", "રસાયણ (ગુજરાત 1લું)"] },
+          { title: "💻 આઇટી & સ્પેસ", nodes: ["ISRO (1969 બેંગાલુરુ)", "બેંગાલુરુ (સિલિકોન વેલી)"] }
+        ],
+        trick: "💡 ઔદ્યોગિક વર્ષો ટ્રીક: 'TISCO = 1907 • SAIL = 1954 • ISRO = 1969'"
+      },
+      "ch-14": {
+        root: "પરિવહન, સંદેશાવ્યવહાર અને વ્યાપાર (Ch 14)",
+        branches: [
+          { title: "🛣️ સડક & રેલ માર્ગ", nodes: ["NH-44 (શ્રીનગરથી કન્યાકુમારી - સૌથી લાંબો)", "સ્વર્ણિમ ચતુર્ભુજ (4 મહાનગરો)", "પ્રથમ રેલવે (1853 મુંબઈ-થાણે 34 km)", "વિવેક એક્સપ્રેસ (4286 km)"] },
+          { title: "🚢 જળમાર્ગ & બંદરો", nodes: ["NW-1 (ગંગા - હલ્દિયાથી અલ્હાબાદ 1620 km)", "કંડલા (મુક્ત વેપાર બંદર)"] },
+          { title: "🌐 વ્યાપાર અભિયાન", nodes: ["Make in India (25 સપ્ટેમ્બર 2014)"] }
+        ],
+        trick: "💡 પરિવહન હિસ્સો ટ્રીક: 'સડક 83% • રેલવે 9% • હવાઈ 6% • જળમાર્ગ 2%'"
+      },
+      "ch-15": {
+        root: "આર્થિક વિકાસ (Ch 15)",
+        branches: [
+          { title: "📊 વિકાસશીલ અર્થતંત્ર", nodes: ["માથાદીઠ આવક < $735 (વિશ્વબેંક 2004)", "ખેતી પર 60% આધાર", "દ્વિમુખી અર્થતંત્ર"] },
+          { title: "🏢 અર્થતંત્રના 3 ક્ષેત્રો", nodes: ["પ્રાથમિક (ખેતી, પશુપાલન)", "માધ્યમિક (ઉદ્યોગો, બાંધકામ)", "સેવા ક્ષેત્ર (બેંક, વીમો, શિક્ષણ)"] },
+          { title: "⚙️ ઉત્પાદનના 4 સાધનો", nodes: ["જમીન", "મૂડી", "શ્રમ", "નિયોજક"] },
+          { title: "🏛️ 3 આર્થિક પદ્ધતિઓ", nodes: ["બજાર પદ્ધતિ (નફો)", "સમાજવાદી (સમાજ કલ્યાણ)", "મિશ્ર અર્થતંત્ર (ભારત)"] }
+        ],
+        trick: "💡 ઉત્પાદનના 4 સાધનો: 'જ - મૂ - શ્ર - નિ' (જમીન, મૂડી, શ્રમ, નિયોજક)"
+      },
+      "ch-16": {
+        root: "આર્થિક ઉદારીકરણ અને વૈશ્વિકીકરણ (Ch 16)",
+        branches: [
+          { title: "📈 નવી આર્થિક નીતિ (1991)", nodes: ["ઉદારીકરણ (પરવાના મુક્તિ)", "ખાનગીકરણ (વિમૂડીકરણ)", "વૈશ્વિકીકરણ (વિશ્વ સાથે જોડાણ)"] },
+          { title: "🌐 WTO (વિશ્વ વ્યાપાર સંગઠન)", nodes: ["સ્થાપના 1 જાન્યુઆરી 1995", "વડું મથક: જીનીવા (સ્વિટ્ઝર્લૅન્ડ)"] },
+          { title: "🌱 ટકાઉ વિકાસ & પર્યાવરણ", nodes: ["ભાવી પેઢી માટે સંસાધન જતન", "5 જૂન વિશ્વ પર્યાવરણ દિવસ", "1981 વાયુ પ્રદૂષણ ધારો"] }
+        ],
+        trick: "💡 આર્થિક સુધારા ટ્રીક: 'L - P - G (1991)' (Liberalization, Privatization, Globalization)"
+      },
+      "ch-17": {
+        root: "ગરીબી અને બેરોજગારી પડકારો (Ch 17)",
+        branches: [
+          { title: "📉 ગરીબી (Poverty)", nodes: ["નિરપેક્ષ ગરીબી (લઘુતમ ખર્ચ અશક્ય)", "સાપેક્ષ ગરીબી (આવક તુલના)", "ભારતમાં 21.9% (છત્તીસગઢ 1લું, ગોવા છેલ્લું)"] },
+          { title: "👷 ગરીબી નિવારણ યોજનાઓ", nodes: ["મનરેગા (100 દિવસ કામ ગેરંટી)", "મા અન્નપૂર્ણા (35 kg અનાજ)", "PMKSY / PMFBY"] },
+          { title: "👔 બેરોજગારીના પ્રકારો", nodes: ["ઋતુગત", "ઘર્ષણજન્ય (નવી ટેકનોલોજી)", "પ્રચ્છન્ન/છૂપી (ખેતીમાં)", "શિક્ષિત બેરોજગારી"] }
+        ],
+        trick: "💡 મનરેગા સૂત્ર: 'આપણા ગામમાં આપણું કામ, સાથે મળે છે વાજબી દામ' (100 દિવસ કાનૂની ગેરંટી)"
+      },
+      "ch-18": {
+        root: "ભાવવધારો અને ગ્રાહક જાગૃતિ (Ch 18)",
+        branches: [
+          { title: "📈 ભાવવધારો & નિયંત્રણ", nodes: ["નાણાં પુરવઠો વધવો", "સંગ્રહખોરી સામે PASA Act", "જાહેર વિતરણ પ્રણાલી (PDS)"] },
+          { title: "⚖️ ગ્રાહક સુરક્ષા કાયદો (COPRA)", nodes: ["15 માર્ચ: વિશ્વ ગ્રાહક અધિકાર", "24 ડિસેમ્બર: રાષ્ટ્રીય ગ્રાહક અધિકાર (1986)", "રાલ્ફ નાડર (ગ્રાહક આંદોલન પિતા)"] },
+          { title: "🏛️ 3 સ્તરીય અદાલતો", nodes: ["જિલ્લા ફોરમ (< ₹20 લાખ)", "રાજ્ય કમિશન (₹20L થી ₹1 કરોડ)", "રાષ્ટ્રીય કમિશન (> ₹1 કરોડ)"] },
+          { title: "🏷️ ગુણવત્તા માર્કા", nodes: ["ISI/BIS (ઘરવપરાશ)", "AGMARK (ખેત પેદાશ)", "HALLMARK (સોનું)", "FPO (ફળ-શાકભાજી જામ)"] }
+        ],
+        trick: "💡 અદાલત દાવાની મર્યાદા ટ્રીક: 'જિલ્લા = 20 લાખ, રાજ્ય = 1 કરોડ, રાષ્ટ્રીય = 1 કરોડથી વધુ'"
+      },
+      "ch-19": {
+        root: "માનવ વિકાસ આંક (HDI) (Ch 19)",
+        branches: [
+          { title: "📊 HDI સંકલ્પના", nodes: ["પ્રો. અમર્ત્ય સેન & મહબૂબ ઉલ હક", "UNDP દ્વારા 1990 થી HDR અહેવાલ", "મૂલ્ય 0 થી 1 વચ્ચે"] },
+          { title: "🎯 HDI ના 3 નિર્દેશકો", nodes: ["(1) અપેક્ષિત આયુષ્ય (ભારત 68 વર્ષ)", "(2) શિક્ષણ આંક (શાળાકીય વર્ષો)", "(3) જીવનધોરણ / આવક (GNI PPP)"] },
+          { title: "🌍 વૈશ્વિક સ્થિતિ & મહિલા", nodes: ["નોર્વે 1લું (0.944)", "ભારત 130મું (0.609)", "અભયમ 181 મહિલા હેલ્પલાઇન"] }
+        ],
+        trick: "💡 HDI ના 3 નિર્દેશકો ટ્રીક: 'આ - શિ - આ' (આયુષ્ય, શિક્ષણ, આવક PPP)"
+      },
+      "ch-20": {
+        root: "સામાજિક સમસ્યાઓ અને પડકારો (Ch 20)",
+        branches: [
+          { title: "📜 બંધારણીય જોગવાઈ", nodes: ["કલમ 341 (અનુસૂચિત જાતિઓ SC)", "કલમ 342 (અનુસૂચિત જનજાતિઓ ST)"] },
+          { title: "💣 નક્સલવાદી આંદોલન", nodes: ["1967 નક્સલબારી (પશ્ચિમ બંગાળ)", "ચારુ મજુમદાર નેતૃત્વ"] },
+          { title: "⚔️ આતંકવાદ vs બળવાખોરી", nodes: ["બળવાખોરી = પ્રાદેશિક/સ્થાનિક સ્તરે", "આતંકવાદ = વૈશ્વિક સંગઠિત હિંસા"] }
+        ],
+        trick: "💡 બંધારણીય કલમો ટ્રીક: 'SC = 341 • ST = 342'"
+      },
+      "ch-21": {
+        root: "સામાજિક પરિવર્તન અને નાગરિક હકો (Ch 21)",
+        branches: [
+          { title: "🕊️ માનવ અધિકારો", nodes: ["10 ડિસેમ્બર 1948 (UN ઘોષણાપત્ર)", "કલમ 32 = બંધારણનો આત્મા (ડો. આંબેડકર)"] },
+          { title: "🧒 બાળ અધિકારો & RTE", nodes: ["14 વર્ષથી નીચે બાળમજૂરી ગુનો", "RTE Act 2009 (6-14 મફત-ફરજિયાત)", "ગુજરાતમાં 18 ફેબ્રુઆરી 2012"] },
+          { title: "📑 પારદર્શિતા & અન્ન સુરક્ષા", nodes: ["RTI Act 2005 (માહિતી અધિકાર)", "NFSA 2013 (રાષ્ટ્રીય અન્ન સલામતી)"] }
+        ],
+        trick: "💡 કાયદાકીય સાલવારી ટ્રીક: 'RTI = 2005 • RTE = 2009 • NFSA = 2013'"
+      }
+    };
+
     // RENDER CHAPTER CONTENT SECTIONS
     function renderChapterContent(ch) {
       // 1. Points
@@ -1450,7 +1643,38 @@
         </div>
       `;
 
-      // 2. Dates
+      // 2. Mind Map
+      const mm = MINDMAP_DATA[ch.id] || {
+        root: `${ch.titleGu} (Ch ${ch.num})`,
+        branches: [
+          { title: "📌 મુખ્ય મુદ્દાઓ", nodes: ch.points.slice(0, 4) },
+          { title: "📖 સંકલ્પનાઓ", nodes: ch.terms.map(t => t.term) }
+        ],
+        trick: "💡 બોર્ડ પરીક્ષા માટે મુદ્દાસર પોઈન્ટ્સ અને સાલવારી યાદ રાખો."
+      };
+
+      panelMindmap.innerHTML = `
+        <div class="mindmap-container">
+          <div class="card-heading" style="border-bottom: none; margin-bottom: 8px;">🧠 પ્રકરણ કોન્સેપ્ટ માઇન્ડ મેપ (Visual Tree)</div>
+          <div class="mm-root">${mm.root}</div>
+          <div class="mm-branches">
+            ${mm.branches.map(b => `
+              <div class="mm-branch">
+                <div class="mm-branch-title">${b.title}</div>
+                <div class="mm-nodes">
+                  ${b.nodes.map(n => `<span class="mm-node">${n}</span>`).join("")}
+                </div>
+              </div>
+            `).join("")}
+          </div>
+          <div class="mm-trick-box">
+            <div class="mm-trick-title">⚡ બોર્ડ એક્ઝામ મેમરી હેક (યાદ રાખવાની ટ્રીક)</div>
+            <div class="mm-trick-content">${mm.trick}</div>
+          </div>
+        </div>
+      `;
+
+      // 3. Dates
       panelDates.innerHTML = `
         <div class="content-card">
           <div class="card-heading">📅 મહત્વની સાલવારી અને ઐતિહાસિક તારીખો</div>
@@ -1465,7 +1689,7 @@
         </div>
       `;
 
-      // 3. Terms
+      // 4. Terms
       panelTerms.innerHTML = `
         <div class="content-card">
           <div class="card-heading">📖 મહત્વપૂર્ણ વ્યાખ્યાઓ અને શબ્દાવલિ</div>
@@ -1480,7 +1704,7 @@
         </div>
       `;
 
-      // 4. IMP Q&A
+      // 5. IMP Q&A
       panelImp.innerHTML = `
         <div class="content-card">
           <div class="card-heading">🎯 બોર્ડ પરીક્ષા મોસ્ટ IMP પ્રશ્નોત્તરી (2, 3, 4 ગુણ)</div>
@@ -1494,7 +1718,7 @@
       `;
     }
 
-    // SWITCH SECTION (Points / Dates / Terms / IMP)
+    // SWITCH SECTION (Points / Mindmap / Dates / Terms / IMP)
     function switchSection(secKey) {
       activeSection = secKey;
       secTabs.forEach(tab => {
@@ -1502,147 +1726,33 @@
       });
 
       panelPoints.style.display = secKey === "points" ? "block" : "none";
+      panelMindmap.style.display = secKey === "mindmap" ? "block" : "none";
       panelDates.style.display = secKey === "dates" ? "block" : "none";
       panelTerms.style.display = secKey === "terms" ? "block" : "none";
       panelImp.style.display = secKey === "imp" ? "block" : "none";
     }
 
-    // ROBUST MOBILE-FIRST WEB SPEECH API AUDIO ENGINE
+    // STREAMLINED RELIABLE AUDIO READER (WEB SPEECH API)
     const btnListen = document.getElementById("btn-listen");
-    const btnPrevSentence = document.getElementById("btn-prev-sentence");
-    const btnNextSentence = document.getElementById("btn-next-sentence");
-    const btnStopAudio = document.getElementById("btn-stop-audio");
     const listenIcon = document.getElementById("listen-icon");
     const listenText = document.getElementById("listen-text");
-    const audioProgressBar = document.getElementById("audio-progress-bar");
-    const audioSentenceCount = document.getElementById("audio-sentence-count");
-    const audioSentenceText = document.getElementById("audio-sentence-text");
-    const audioVoiceInfo = document.getElementById("audio-voice-info");
-
     let isSpeaking = false;
-    let audioPlaylist = [];
-    let currentSentenceIdx = 0;
-    let keepAliveInterval = null;
-
-    function getBestTTSVoice() {
-      if (!('speechSynthesis' in window)) return null;
-      const voices = window.speechSynthesis.getVoices();
-      if (!voices || voices.length === 0) return null;
-
-      // 1. Check for Gujarati voice
-      let match = voices.find(v => (v.lang && (v.lang === "gu-IN" || v.lang.startsWith("gu"))) || (v.name && v.name.toLowerCase().includes("gujarati")));
-      if (match) return { voice: match, lang: match.lang || "gu-IN", label: "ગુજરાતી વૉઇસ" };
-
-      // 2. Check for Hindi voice (available on 99% of Android & iOS devices in India)
-      match = voices.find(v => (v.lang && (v.lang === "hi-IN" || v.lang.startsWith("hi"))) || (v.name && v.name.toLowerCase().includes("hindi")));
-      if (match) return { voice: match, lang: match.lang || "hi-IN", label: "હિન્દી / પ્રાદેશિક વૉઇસ" };
-
-      // 3. Indian English
-      match = voices.find(v => v.lang && v.lang === "en-IN");
-      if (match) return { voice: match, lang: match.lang, label: "ભારતીય અવાજ" };
-
-      // 4. Default device voice
-      const defaultVoice = voices.find(v => v.default) || voices[0];
-      return { voice: defaultVoice, lang: defaultVoice.lang || "gu-IN", label: "સિસ્ટમ વૉઇસ" };
-    }
-
-    function buildChapterPlaylist(ch) {
-      const list = [];
-      list.push(`પ્રકરણ ${ch.num}. ${ch.titleGu}.`);
-      list.push("મુખ્ય આધારભૂત મુદ્દાઓ.");
-      ch.points.forEach(pt => {
-        // Break long points into shorter phrases if needed
-        const cleanPt = pt.replace(/[•]/g, "").trim();
-        list.push(cleanPt);
-      });
-      list.push("મહત્વની સાલવારી અને તારીખો.");
-      ch.dates.forEach(d => {
-        list.push(`${d.tag}: ${d.text}`);
-      });
-      return list;
-    }
 
     function stopAudio() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
       isSpeaking = false;
-      if (keepAliveInterval) {
-        clearInterval(keepAliveInterval);
-        keepAliveInterval = null;
-      }
       if (btnListen) {
         btnListen.classList.remove("speaking");
-        listenIcon.textContent = "▶️";
-        listenText.textContent = "પ્રકરણ સાંભળો (Play Audio)";
+        listenIcon.textContent = "🔊";
+        listenText.textContent = "પ્રકરણ સારાંશ સાંભળો (Listen Summary)";
       }
-      if (audioProgressBar) {
-        audioProgressBar.style.display = "none";
-      }
-    }
-
-    function playSentenceAt(index) {
-      if (!isSpeaking || !audioPlaylist || index >= audioPlaylist.length) {
-        stopAudio();
-        return;
-      }
-
-      currentSentenceIdx = index;
-      const textToSpeak = audioPlaylist[index];
-
-      // Update UI progress
-      if (audioProgressBar) {
-        audioProgressBar.style.display = "block";
-        audioSentenceCount.textContent = `વાક્ય ${index + 1} / ${audioPlaylist.length}`;
-        audioSentenceText.textContent = textToSpeak;
-      }
-
-      const voiceData = getBestTTSVoice();
-      if (audioVoiceInfo && voiceData) {
-        audioVoiceInfo.textContent = voiceData.label;
-      }
-
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.resume();
-
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      if (voiceData) {
-        if (voiceData.voice) utterance.voice = voiceData.voice;
-        utterance.lang = voiceData.lang;
-      } else {
-        utterance.lang = "gu-IN";
-      }
-
-      utterance.rate = 0.92;
-      utterance.pitch = 1.0;
-
-      utterance.onend = () => {
-        if (isSpeaking) {
-          if (currentSentenceIdx + 1 < audioPlaylist.length) {
-            playSentenceAt(currentSentenceIdx + 1);
-          } else {
-            stopAudio();
-          }
-        }
-      };
-
-      utterance.onerror = (e) => {
-        console.warn("TTS sentence error, skipping:", e);
-        if (isSpeaking) {
-          if (currentSentenceIdx + 1 < audioPlaylist.length) {
-            playSentenceAt(currentSentenceIdx + 1);
-          } else {
-            stopAudio();
-          }
-        }
-      };
-
-      window.speechSynthesis.speak(utterance);
     }
 
     function toggleAudio() {
       if (!('speechSynthesis' in window)) {
-        alert("આ બ્રાઉઝરમાં Web Speech API ઓડિયો સુવિધા સપોર્ટ કરતી નથી. કૃપા કરીને Google Chrome અથવા Safari માં પ્રયાસ કરો.");
+        alert("તમારા બ્રાઉઝરમાં Web Speech API ઓડિયો ઉપલબ્ધ નથી.");
         return;
       }
 
@@ -1653,49 +1763,42 @@
 
       if (!activeChapter) return;
 
-      // Start new audio session
-      isSpeaking = true;
-      audioPlaylist = buildChapterPlaylist(activeChapter);
-      currentSentenceIdx = 0;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.resume();
 
-      btnListen.classList.add("speaking");
-      listenIcon.textContent = "⏸️";
-      listenText.textContent = "ઓડિયો પોઝ (Pause Audio)";
+      // Pick high-yield points for a crisp audio summary
+      const summaryPoints = activeChapter.points.slice(0, 3).map(p => p.replace(/[•]/g, "")).join(". ");
+      const textToSpeak = `પ્રકરણ ${activeChapter.num}. ${activeChapter.titleGu}. મુખ્ય સારાંશ: ${summaryPoints}`;
 
-      // Android Chrome keep-alive bugfix
-      if (keepAliveInterval) clearInterval(keepAliveInterval);
-      keepAliveInterval = setInterval(() => {
-        if (isSpeaking && 'speechSynthesis' in window && window.speechSynthesis.speaking) {
-          window.speechSynthesis.pause();
-          window.speechSynthesis.resume();
-        }
-      }, 10000);
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = "gu-IN";
+      utterance.rate = 0.92;
 
-      playSentenceAt(0);
+      // Select available voice (Gujarati, Hindi, or default)
+      const voices = window.speechSynthesis.getVoices() || [];
+      const guVoice = voices.find(v => (v.lang && (v.lang === "gu-IN" || v.lang.startsWith("gu"))) || (v.name && v.name.toLowerCase().includes("gujarati")));
+      const hiVoice = voices.find(v => (v.lang && (v.lang === "hi-IN" || v.lang.startsWith("hi"))) || (v.name && v.name.toLowerCase().includes("hindi")));
+      if (guVoice) {
+        utterance.voice = guVoice;
+      } else if (hiVoice) {
+        utterance.voice = hiVoice;
+      }
+
+      utterance.onstart = () => {
+        isSpeaking = true;
+        btnListen.classList.add("speaking");
+        listenIcon.textContent = "⏹️";
+        listenText.textContent = "ઓડિયો બંધ કરો (Stop Audio)";
+      };
+
+      utterance.onend = stopAudio;
+      utterance.onerror = stopAudio;
+
+      window.speechSynthesis.speak(utterance);
     }
 
     if (btnListen) {
       btnListen.onclick = toggleAudio;
-    }
-
-    if (btnStopAudio) {
-      btnStopAudio.onclick = stopAudio;
-    }
-
-    if (btnPrevSentence) {
-      btnPrevSentence.onclick = () => {
-        if (isSpeaking && currentSentenceIdx > 0) {
-          playSentenceAt(currentSentenceIdx - 1);
-        }
-      };
-    }
-
-    if (btnNextSentence) {
-      btnNextSentence.onclick = () => {
-        if (isSpeaking && currentSentenceIdx + 1 < audioPlaylist.length) {
-          playSentenceAt(currentSentenceIdx + 1);
-        }
-      };
     }
 
     // Stop audio when navigating away
